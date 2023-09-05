@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,17 +12,20 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DeliverEat
 {
-    public partial class FrmRealizarPedido : Form
+    public partial class FrmRealizarPedido : MaterialSkin.Controls.MaterialForm
     {
         public FrmRealizarPedido()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Pink100, Primary.Pink200, Primary.Indigo100, Accent.Indigo100, TextShade.WHITE);
+
+
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void rbtEfectivo_CheckedChanged(object sender, EventArgs e)
         {
@@ -67,7 +71,6 @@ namespace DeliverEat
         private void ClearAll()
         {
             txtCalle.Clear();
-            txtNumeroCalle.Clear();
             // cmb
             txtReferencia.Clear();
             rbtEfectivo.Checked = true;
@@ -86,6 +89,8 @@ namespace DeliverEat
                 txtReferencia.Text = txtReferencia.Text.Substring(0, 240); // Limitar la longitud a 240 caracteres
                 txtReferencia.SelectionStart = txtReferencia.Text.Length; // Colocar el cursor al final del texto
             }
+
+
         }
     }
 }
