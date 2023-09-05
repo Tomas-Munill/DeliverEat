@@ -80,10 +80,10 @@ namespace DeliverEat
 
         private void txtReferencia_TextChanged(object sender, EventArgs e)
         {
-            lblCantidadCaracteres.Text = txtReferencia.Text.Length + "/100"; // Mostrar la cantidad de caracteres ingresados
-            if (txtReferencia.Text.Length > 100)
+            lblCantidadCaracteres.Text = txtReferencia.Text.Length + "/240"; // Mostrar la cantidad de caracteres ingresados
+            if (txtReferencia.Text.Length > 240)
             {
-                txtReferencia.Text = txtReferencia.Text.Substring(0, 100); // Limitar la longitud a 100 caracteres
+                txtReferencia.Text = txtReferencia.Text.Substring(0, 240); // Limitar la longitud a 240 caracteres
                 txtReferencia.SelectionStart = txtReferencia.Text.Length; // Colocar el cursor al final del texto
             }
         }

@@ -31,9 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.placeholderTextBox3 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
-            this.placeholderTextBox1 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
-            this.placeholderTextBox2 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
             this.txtReferencia = new System.Windows.Forms.TextBox();
             this.lblCompletaDireccion = new System.Windows.Forms.Label();
             this.lblDeliverEat = new System.Windows.Forms.Label();
@@ -46,7 +43,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.txtMontoAPagar = new System.Windows.Forms.TextBox();
             this.lblMontoAPagar = new System.Windows.Forms.Label();
             this.lblCuandoRebirlo = new System.Windows.Forms.Label();
             this.txtCvc = new System.Windows.Forms.TextBox();
@@ -62,9 +58,12 @@
             this.lblNumeroTarjeta = new System.Windows.Forms.Label();
             this.lblReferencia = new System.Windows.Forms.Label();
             this.lblCiudades = new System.Windows.Forms.Label();
-            this.lblNumeroCalle = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.placeholderTextBox3 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
+            this.placeholderTextBox1 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
+            this.placeholderTextBox2 = new DeliverEat.ControlesPersonalizados.PlaceholderTextBox();
+            this.txtMontoAPagar = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.gboxFormaPago.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +72,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
+            this.panel1.Controls.Add(this.txtMontoAPagar);
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.placeholderTextBox3);
@@ -88,7 +88,6 @@
             this.panel1.Controls.Add(this.textBox9);
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton4);
-            this.panel1.Controls.Add(this.txtMontoAPagar);
             this.panel1.Controls.Add(this.lblMontoAPagar);
             this.panel1.Controls.Add(this.lblCuandoRebirlo);
             this.panel1.Controls.Add(this.txtCvc);
@@ -104,7 +103,6 @@
             this.panel1.Controls.Add(this.lblNumeroTarjeta);
             this.panel1.Controls.Add(this.lblReferencia);
             this.panel1.Controls.Add(this.lblCiudades);
-            this.panel1.Controls.Add(this.lblNumeroCalle);
             this.panel1.Controls.Add(this.lblCalle);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -131,36 +129,6 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBox1.TabIndex = 35;
             this.maskedTextBox1.ValidatingType = typeof(int);
-            // 
-            // placeholderTextBox3
-            // 
-            this.placeholderTextBox3.ForeColor = System.Drawing.Color.Gray;
-            this.placeholderTextBox3.Location = new System.Drawing.Point(182, 324);
-            this.placeholderTextBox3.Name = "placeholderTextBox3";
-            this.placeholderTextBox3.PlaceholderText = "Referencia (opcional)";
-            this.placeholderTextBox3.Size = new System.Drawing.Size(130, 20);
-            this.placeholderTextBox3.TabIndex = 34;
-            this.placeholderTextBox3.Text = "Referencia (opcional)";
-            // 
-            // placeholderTextBox1
-            // 
-            this.placeholderTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.placeholderTextBox1.Location = new System.Drawing.Point(190, 287);
-            this.placeholderTextBox1.Name = "placeholderTextBox1";
-            this.placeholderTextBox1.PlaceholderText = "Calle";
-            this.placeholderTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.placeholderTextBox1.TabIndex = 33;
-            this.placeholderTextBox1.Text = "Calle";
-            // 
-            // placeholderTextBox2
-            // 
-            this.placeholderTextBox2.ForeColor = System.Drawing.Color.Gray;
-            this.placeholderTextBox2.Location = new System.Drawing.Point(182, 255);
-            this.placeholderTextBox2.Name = "placeholderTextBox2";
-            this.placeholderTextBox2.PlaceholderText = "Número";
-            this.placeholderTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.placeholderTextBox2.TabIndex = 32;
-            this.placeholderTextBox2.Text = "Número";
             // 
             // txtReferencia
             // 
@@ -242,7 +210,7 @@
             this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(166)))), ((int)(((byte)(202)))));
-            this.btnConfirmar.Location = new System.Drawing.Point(182, 699);
+            this.btnConfirmar.Location = new System.Drawing.Point(182, 738);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(87, 31);
             this.btnConfirmar.TabIndex = 0;
@@ -256,7 +224,7 @@
             this.lblCantidadCaracteres.Name = "lblCantidadCaracteres";
             this.lblCantidadCaracteres.Size = new System.Drawing.Size(36, 13);
             this.lblCantidadCaracteres.TabIndex = 26;
-            this.lblCantidadCaracteres.Text = "0/100\r\n";
+            this.lblCantidadCaracteres.Text = "0/240";
             // 
             // textBox9
             // 
@@ -286,13 +254,6 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Lo antes posible";
             this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // txtMontoAPagar
-            // 
-            this.txtMontoAPagar.Location = new System.Drawing.Point(195, 405);
-            this.txtMontoAPagar.Name = "txtMontoAPagar";
-            this.txtMontoAPagar.Size = new System.Drawing.Size(100, 20);
-            this.txtMontoAPagar.TabIndex = 22;
             // 
             // lblMontoAPagar
             // 
@@ -417,24 +378,15 @@
             this.lblCiudades.TabIndex = 3;
             this.lblCiudades.Text = "Ciudad:";
             // 
-            // lblNumeroCalle
-            // 
-            this.lblNumeroCalle.AutoSize = true;
-            this.lblNumeroCalle.Location = new System.Drawing.Point(179, 103);
-            this.lblNumeroCalle.Name = "lblNumeroCalle";
-            this.lblNumeroCalle.Size = new System.Drawing.Size(47, 13);
-            this.lblNumeroCalle.TabIndex = 2;
-            this.lblNumeroCalle.Text = "Numero:";
-            // 
             // lblCalle
             // 
             this.lblCalle.AutoSize = true;
             this.lblCalle.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCalle.Location = new System.Drawing.Point(22, 103);
             this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(35, 15);
+            this.lblCalle.Size = new System.Drawing.Size(89, 15);
             this.lblCalle.TabIndex = 1;
-            this.lblCalle.Text = "Calle:";
+            this.lblCalle.Text = "Calle y número:";
             // 
             // label1
             // 
@@ -444,6 +396,45 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            // 
+            // placeholderTextBox3
+            // 
+            this.placeholderTextBox3.ForeColor = System.Drawing.Color.Gray;
+            this.placeholderTextBox3.Location = new System.Drawing.Point(182, 324);
+            this.placeholderTextBox3.Name = "placeholderTextBox3";
+            this.placeholderTextBox3.PlaceholderText = "Referencia (opcional)";
+            this.placeholderTextBox3.Size = new System.Drawing.Size(130, 20);
+            this.placeholderTextBox3.TabIndex = 34;
+            this.placeholderTextBox3.Text = "Referencia (opcional)";
+            // 
+            // placeholderTextBox1
+            // 
+            this.placeholderTextBox1.ForeColor = System.Drawing.Color.Gray;
+            this.placeholderTextBox1.Location = new System.Drawing.Point(190, 287);
+            this.placeholderTextBox1.Name = "placeholderTextBox1";
+            this.placeholderTextBox1.PlaceholderText = "Calle";
+            this.placeholderTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.placeholderTextBox1.TabIndex = 33;
+            this.placeholderTextBox1.Text = "Calle";
+            // 
+            // placeholderTextBox2
+            // 
+            this.placeholderTextBox2.ForeColor = System.Drawing.Color.Gray;
+            this.placeholderTextBox2.Location = new System.Drawing.Point(182, 255);
+            this.placeholderTextBox2.Name = "placeholderTextBox2";
+            this.placeholderTextBox2.PlaceholderText = "Número";
+            this.placeholderTextBox2.Size = new System.Drawing.Size(100, 20);
+            this.placeholderTextBox2.TabIndex = 32;
+            this.placeholderTextBox2.Text = "Número";
+            // 
+            // txtMontoAPagar
+            // 
+            this.txtMontoAPagar.Location = new System.Drawing.Point(195, 405);
+            this.txtMontoAPagar.Mask = "99,999.99";
+            this.txtMontoAPagar.Name = "txtMontoAPagar";
+            this.txtMontoAPagar.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoAPagar.TabIndex = 38;
+            this.txtMontoAPagar.ValidatingType = typeof(int);
             // 
             // FrmRealizarPedido
             // 
@@ -475,7 +466,6 @@
         private System.Windows.Forms.RadioButton rbtEfectivo;
         private System.Windows.Forms.Label lblReferencia;
         private System.Windows.Forms.Label lblCiudades;
-        private System.Windows.Forms.Label lblNumeroCalle;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.TextBox txtCvc;
         private System.Windows.Forms.TextBox txtFechaVencimiento;
@@ -487,7 +477,6 @@
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox txtMontoAPagar;
         private System.Windows.Forms.Label lblMontoAPagar;
         private System.Windows.Forms.Label lblCuandoRebirlo;
         private System.Windows.Forms.TextBox textBox9;
@@ -501,6 +490,7 @@
         private ControlesPersonalizados.PlaceholderTextBox placeholderTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox txtMontoAPagar;
     }
 }
 
