@@ -71,7 +71,7 @@ namespace DeliverEat
         {
             string mensaje = "";
             // Validar que calle y numero sea alfanumerico
-            Regex regex = new Regex("^[0-9a-zA-Z]+$");
+            Regex regex = new Regex("^[0-9a-zA-Z ]+$");
             if (!regex.IsMatch(txtCalle.Text))
             {
                 mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
