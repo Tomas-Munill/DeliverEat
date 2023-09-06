@@ -53,6 +53,9 @@
     <Compile Include="ControlesPersonalizados\PlaceholderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlesPersonalizados\RJDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InterfacesDeUsuario\FrmRealizarPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +75,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -91,6 +95,12 @@
     <Folder Include="Entidades\" />
     <Folder Include="Repositorios\" />
     <Folder Include="Servicios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
