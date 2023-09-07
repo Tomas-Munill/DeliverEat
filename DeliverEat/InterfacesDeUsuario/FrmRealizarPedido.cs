@@ -79,7 +79,7 @@ namespace DeliverEat
             Regex regex = new Regex("^[0-9\\p{L} ]+$");
             if (!regex.IsMatch(txtCalle.Text))
             {
-                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.\n";
+                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
             }
 
             // Validar horario de fecha hora recepcion
@@ -87,11 +87,11 @@ namespace DeliverEat
             {
                 if (dtpFechaHoraRecepcion.Value.Hour < 7)
                 {
-                    mensaje += "Las horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.\n";
+                    mensaje += "\nLas horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.";
                 }
                 if (dtpFechaHoraRecepcion.Value < DateTime.Now)
                 {
-                    mensaje += "No se puede planificar un pedido para una hora menor a la actual\n";
+                    mensaje += "\nNo se puede planificar un pedido para una hora menor a la actual";
                 }
             }
 
@@ -105,12 +105,12 @@ namespace DeliverEat
                 {
                     if (!ValidarTarjeta(numeroTarjeta))
                     {
-                        mensaje += "La tarjeta ingresada no es valida\n";
+                        mensaje += "\nLa tarjeta ingresada no es valida";
                     }
                 }
                 else
                 {
-                    mensaje += "Debe cargar todos los numeros de la Tarjeta\n";
+                    mensaje += "\nDebe cargar todos los numeros de la Tarjeta";
                 }
 
             }
