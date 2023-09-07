@@ -1,4 +1,6 @@
-﻿using MaterialSkin;
+﻿using DeliverEat.Entidades;
+using DeliverEat.Servicios;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,10 @@ namespace DeliverEat
 {
     public partial class FrmRealizarPedido : MaterialSkin.Controls.MaterialForm
     {
-        public FrmRealizarPedido()
+        public GestorPedido gestorPedido;
+
+
+        public FrmRealizarPedido(GestorPedido gestor)
         {
             InitializeComponent();
 
@@ -25,7 +30,7 @@ namespace DeliverEat
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Pink100, Primary.Pink200, Primary.Indigo100, Accent.Indigo100, TextShade.BLACK);
 
-
+            this.gestorPedido = gestor;
         }
 
         private void FrmRealizarPedido_Load(object sender, EventArgs e)
@@ -42,7 +47,7 @@ namespace DeliverEat
         private void ClearAll()
         {
 
-            
+
         }
 
         private void txtReferencia_TextChanged(object sender, EventArgs e)
@@ -74,7 +79,7 @@ namespace DeliverEat
             Regex regex = new Regex("^[0-9\\p{L} ]+$");
             if (!regex.IsMatch(txtCalle.Text))
             {
-                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
+                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.\n";
             }
 
             // Validar horario de fecha hora recepcion
@@ -82,26 +87,37 @@ namespace DeliverEat
             {
                 if (dtpFechaHoraRecepcion.Value.Hour < 7)
                 {
-                    mensaje += "Las horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.";
+                    mensaje += "Las horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.\n";
                 }
                 if (dtpFechaHoraRecepcion.Value < DateTime.Now)
                 {
-                    mensaje += "No se puede planificar un pedido para una hora menor a la actual";
+                    mensaje += "No se puede planificar un pedido para una hora menor a la actual\n";
                 }
             }
+
+            string numeroTarjeta = txtNumeroTarjeta.Text.Replace(" ", "");
 
             // Validar tarjeta visa
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpTarjeta"])
             {
-                if (!ValidarTarjetaVisa(txtNumeroTarjeta.Text))
+                //if (!numeroTarjeta.Contains(" "))
+                if (numeroTarjeta.Length == 19)
                 {
-                    mensaje += "La tarjeta ingresada no es valida";
+                    if (!ValidarTarjeta(numeroTarjeta))
+                    {
+                        mensaje += "La tarjeta ingresada no es valida\n";
+                    }
                 }
+                else
+                {
+                    mensaje += "Debe cargar todos los numeros de la Tarjeta\n";
+                }
+
             }
 
 
             // Validar monto en efectivo a abonar mayor al monto del pedido
-            
+
 
 
             if (mensaje != "")
@@ -113,52 +129,104 @@ namespace DeliverEat
             {
                 MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Tu pedido ha sido confirmado!", 2000);
                 SnackBarMessage.Show(this);
+                GuardarDatos();
             }
+
+
+
+
+
         }
 
-        private bool ValidarTarjetaVisa(string numero)
+        private bool ValidarTarjeta(string numero)
         {
             bool resultado = true;
+            TarjetaCredito tarjeta = new TarjetaCredito();
             Regex expresion = new Regex("\\b4\\d{3}-\\d{4}-\\d{4}-\\d{4}\\b");
-            if (!expresion.IsMatch(numero)){
+            if (!expresion.IsMatch(numero))
+            {
                 resultado = false;
             }
+            return tarjeta.ValidarMetodo(numero) && resultado;
 
-            return ValidarLuhn(numero) && resultado;
-           
         }
 
-        private bool ValidarLuhn(string numero)
+        //private bool ValidarLuhn(string numero)
+        //{
+        //    int sum = 0;
+        //    bool alternate = false;
+
+        //    // Recorre los dígitos de derecha a izquierda
+        //    for (int i = numero.Length - 1; i >= 0; i--)
+        //    {
+        //        if (numero[i] == '-')
+        //            continue;
+
+        //        int digit = int.Parse(numero[i].ToString());
+
+
+
+        //        if (alternate)
+        //        {
+        //            // Duplica el dígito y ajusta si es mayor o igual a 10
+        //            digit *= 2;
+        //            if (digit >= 10)
+        //            {
+        //                digit -= 9;
+        //            }
+        //        }
+
+        //        sum += digit;
+        //        alternate = !alternate;
+        //    }
+
+        //    // El número es válido si la suma es un múltiplo de 10
+        //    return sum % 10 == 0;
+        //}
+
+        private void GuardarDatos()
         {
-            int sum = 0;
-            bool alternate = false;
+            Ciudad ciudad = new Ciudad();
+            ciudad.Nombre = cmbCiudades.Text;
 
-            // Recorre los dígitos de derecha a izquierda
-            for (int i = numero.Length - 1; i >= 0; i--)
+            Direccion direccion = new Direccion();
+            direccion.Calle = txtCalle.Text;
+            direccion.ciudad = ciudad;
+            direccion.Referencia = txtReferencia.Text;
+
+
+            List<DetallePedido> listaDetalles = gestorPedido.CargarCarrito();
+
+            Pedido pedido = new Pedido();
+
+            if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
             {
-                if (numero[i] == '-')
-                    continue;
-
-                int digit = int.Parse(numero[i].ToString());
-
-
-
-                if (alternate)
-                {
-                    // Duplica el dígito y ajusta si es mayor o igual a 10
-                    digit *= 2;
-                    if (digit >= 10)
-                    {
-                        digit -= 9;
-                    }
-                }
-
-                sum += digit;
-                alternate = !alternate;
+                Efectivo efectivo = new Efectivo();
+                efectivo.MontoQueAbona = Convert.ToDouble(txtMontoAPagar.Text);
+                pedido.MetodoPago = efectivo;
             }
+            else
+            {
 
-            // El número es válido si la suma es un múltiplo de 10
-            return sum % 10 == 0;
+                TarjetaCredito tarjeta = new TarjetaCredito();
+                tarjeta.numero = txtNumeroTarjeta.Text;
+                tarjeta.cvc = txtCvc.Text;
+                tarjeta.fechaVencimiento = dtpFechaVencimiento.Value;
+                tarjeta.nombreApellidoTitular = txtNombreTitular.Text;
+                pedido.MetodoPago = tarjeta;
+
+            }
+            
+            pedido.RecepcionLoAntesPosible = rdbLoAntesPosible.Checked;
+            pedido.FechaHoraRecepcion = dtpFechaHoraRecepcion.Value;
+            pedido.FechaHoraCreacion = DateTime.Now;
+            pedido.Estado = "Confirmado";
+            pedido.Direccion = direccion;
+            pedido.DetallePedidos = listaDetalles;
+
+            gestorPedido.GuardarPedido(pedido);
+
+
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DeliverEat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmRealizarPedido());
+            Application.Run(new FrmRealizarPedido(new Servicios.GestorPedido()));
         }
     }
 }

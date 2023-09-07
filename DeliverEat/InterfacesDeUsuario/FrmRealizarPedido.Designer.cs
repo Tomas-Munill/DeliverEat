@@ -33,9 +33,10 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tclMetodoPago = new MaterialSkin.Controls.MaterialTabControl();
             this.tpTarjeta = new System.Windows.Forms.TabPage();
+            this.txtNumeroTarjeta = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialMaskedTextBox2 = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtCvc = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.txtNombreTitular = new MaterialSkin.Controls.MaterialTextBox();
             this.tpEfectivo = new System.Windows.Forms.TabPage();
             this.lblConCuantoVasAPagar = new MaterialSkin.Controls.MaterialLabel();
             this.txtMontoAPagar = new MaterialSkin.Controls.MaterialMaskedTextBox();
@@ -50,7 +51,6 @@
             this.btnConfirmar = new MaterialSkin.Controls.MaterialButton();
             this.label1 = new System.Windows.Forms.Label();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtNumeroTarjeta = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
             this.panel1.SuspendLayout();
             this.tclMetodoPago.SuspendLayout();
@@ -103,7 +103,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(16, 268);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(400, 48);
+            this.materialTabSelector1.Size = new System.Drawing.Size(396, 48);
             this.materialTabSelector1.TabIndex = 53;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -124,9 +124,9 @@
             // 
             this.tpTarjeta.Controls.Add(this.txtNumeroTarjeta);
             this.tpTarjeta.Controls.Add(this.materialLabel3);
-            this.tpTarjeta.Controls.Add(this.materialMaskedTextBox2);
+            this.tpTarjeta.Controls.Add(this.txtCvc);
             this.tpTarjeta.Controls.Add(this.dtpFechaVencimiento);
-            this.tpTarjeta.Controls.Add(this.materialTextBox2);
+            this.tpTarjeta.Controls.Add(this.txtNombreTitular);
             this.tpTarjeta.Location = new System.Drawing.Point(4, 22);
             this.tpTarjeta.Name = "tpTarjeta";
             this.tpTarjeta.Padding = new System.Windows.Forms.Padding(3);
@@ -134,6 +134,49 @@
             this.tpTarjeta.TabIndex = 0;
             this.tpTarjeta.Text = "Tarjeta";
             this.tpTarjeta.UseVisualStyleBackColor = true;
+            // 
+            // txtNumeroTarjeta
+            // 
+            this.txtNumeroTarjeta.AllowPromptAsInput = true;
+            this.txtNumeroTarjeta.AnimateReadOnly = false;
+            this.txtNumeroTarjeta.AsciiOnly = false;
+            this.txtNumeroTarjeta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtNumeroTarjeta.BeepOnError = false;
+            this.txtNumeroTarjeta.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtNumeroTarjeta.Depth = 0;
+            this.txtNumeroTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNumeroTarjeta.HidePromptOnLeave = false;
+            this.txtNumeroTarjeta.HideSelection = true;
+            this.txtNumeroTarjeta.Hint = "Número Tarjeta";
+            this.txtNumeroTarjeta.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.txtNumeroTarjeta.LeadingIcon = null;
+            this.txtNumeroTarjeta.Location = new System.Drawing.Point(17, 10);
+            this.txtNumeroTarjeta.Mask = "0000-0000-0000-0000";
+            this.txtNumeroTarjeta.MaxLength = 32767;
+            this.txtNumeroTarjeta.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
+            this.txtNumeroTarjeta.PasswordChar = '\0';
+            this.txtNumeroTarjeta.PrefixSuffixText = null;
+            this.txtNumeroTarjeta.PromptChar = '_';
+            this.txtNumeroTarjeta.ReadOnly = false;
+            this.txtNumeroTarjeta.RejectInputOnFirstFailure = false;
+            this.txtNumeroTarjeta.ResetOnPrompt = true;
+            this.txtNumeroTarjeta.ResetOnSpace = true;
+            this.txtNumeroTarjeta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtNumeroTarjeta.SelectedText = "";
+            this.txtNumeroTarjeta.SelectionLength = 0;
+            this.txtNumeroTarjeta.SelectionStart = 0;
+            this.txtNumeroTarjeta.ShortcutsEnabled = true;
+            this.txtNumeroTarjeta.Size = new System.Drawing.Size(235, 48);
+            this.txtNumeroTarjeta.SkipLiterals = true;
+            this.txtNumeroTarjeta.TabIndex = 56;
+            this.txtNumeroTarjeta.TabStop = false;
+            this.txtNumeroTarjeta.Text = "    -    -    -";
+            this.txtNumeroTarjeta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNumeroTarjeta.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtNumeroTarjeta.TrailingIcon = null;
+            this.txtNumeroTarjeta.UseSystemPasswordChar = false;
+            this.txtNumeroTarjeta.ValidatingType = null;
             // 
             // materialLabel3
             // 
@@ -148,66 +191,66 @@
             this.materialLabel3.TabIndex = 57;
             this.materialLabel3.Text = "Fecha de vencimiento";
             // 
-            // materialMaskedTextBox2
+            // txtCvc
             // 
-            this.materialMaskedTextBox2.AllowPromptAsInput = true;
-            this.materialMaskedTextBox2.AnimateReadOnly = false;
-            this.materialMaskedTextBox2.AsciiOnly = false;
-            this.materialMaskedTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialMaskedTextBox2.BeepOnError = false;
-            this.materialMaskedTextBox2.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.materialMaskedTextBox2.Depth = 0;
-            this.materialMaskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialMaskedTextBox2.HidePromptOnLeave = false;
-            this.materialMaskedTextBox2.HideSelection = true;
-            this.materialMaskedTextBox2.Hint = "CVC";
-            this.materialMaskedTextBox2.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
-            this.materialMaskedTextBox2.LeadingIcon = null;
-            this.materialMaskedTextBox2.Location = new System.Drawing.Point(273, 8);
-            this.materialMaskedTextBox2.Mask = "000 ";
-            this.materialMaskedTextBox2.MaxLength = 32767;
-            this.materialMaskedTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialMaskedTextBox2.Name = "materialMaskedTextBox2";
-            this.materialMaskedTextBox2.PasswordChar = '\0';
-            this.materialMaskedTextBox2.PrefixSuffixText = null;
-            this.materialMaskedTextBox2.PromptChar = '_';
-            this.materialMaskedTextBox2.ReadOnly = false;
-            this.materialMaskedTextBox2.RejectInputOnFirstFailure = false;
-            this.materialMaskedTextBox2.ResetOnPrompt = true;
-            this.materialMaskedTextBox2.ResetOnSpace = true;
-            this.materialMaskedTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialMaskedTextBox2.SelectedText = "";
-            this.materialMaskedTextBox2.SelectionLength = 0;
-            this.materialMaskedTextBox2.SelectionStart = 0;
-            this.materialMaskedTextBox2.ShortcutsEnabled = true;
-            this.materialMaskedTextBox2.Size = new System.Drawing.Size(93, 48);
-            this.materialMaskedTextBox2.SkipLiterals = true;
-            this.materialMaskedTextBox2.TabIndex = 56;
-            this.materialMaskedTextBox2.TabStop = false;
-            this.materialMaskedTextBox2.Text = "    ";
-            this.materialMaskedTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialMaskedTextBox2.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.materialMaskedTextBox2.TrailingIcon = null;
-            this.materialMaskedTextBox2.UseSystemPasswordChar = false;
-            this.materialMaskedTextBox2.ValidatingType = null;
+            this.txtCvc.AllowPromptAsInput = true;
+            this.txtCvc.AnimateReadOnly = false;
+            this.txtCvc.AsciiOnly = false;
+            this.txtCvc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtCvc.BeepOnError = false;
+            this.txtCvc.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtCvc.Depth = 0;
+            this.txtCvc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCvc.HidePromptOnLeave = false;
+            this.txtCvc.HideSelection = true;
+            this.txtCvc.Hint = "CVC";
+            this.txtCvc.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.txtCvc.LeadingIcon = null;
+            this.txtCvc.Location = new System.Drawing.Point(273, 8);
+            this.txtCvc.Mask = "000 ";
+            this.txtCvc.MaxLength = 32767;
+            this.txtCvc.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtCvc.Name = "txtCvc";
+            this.txtCvc.PasswordChar = '\0';
+            this.txtCvc.PrefixSuffixText = null;
+            this.txtCvc.PromptChar = '_';
+            this.txtCvc.ReadOnly = false;
+            this.txtCvc.RejectInputOnFirstFailure = false;
+            this.txtCvc.ResetOnPrompt = true;
+            this.txtCvc.ResetOnSpace = true;
+            this.txtCvc.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCvc.SelectedText = "";
+            this.txtCvc.SelectionLength = 0;
+            this.txtCvc.SelectionStart = 0;
+            this.txtCvc.ShortcutsEnabled = true;
+            this.txtCvc.Size = new System.Drawing.Size(93, 48);
+            this.txtCvc.SkipLiterals = true;
+            this.txtCvc.TabIndex = 56;
+            this.txtCvc.TabStop = false;
+            this.txtCvc.Text = "    ";
+            this.txtCvc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCvc.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtCvc.TrailingIcon = null;
+            this.txtCvc.UseSystemPasswordChar = false;
+            this.txtCvc.ValidatingType = null;
             // 
-            // materialTextBox2
+            // txtNombreTitular
             // 
-            this.materialTextBox2.AnimateReadOnly = false;
-            this.materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox2.Depth = 0;
-            this.materialTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox2.Hint = "Nombre Apellido del Titular";
-            this.materialTextBox2.LeadingIcon = null;
-            this.materialTextBox2.Location = new System.Drawing.Point(14, 64);
-            this.materialTextBox2.MaxLength = 50;
-            this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox2.Multiline = false;
-            this.materialTextBox2.Name = "materialTextBox2";
-            this.materialTextBox2.Size = new System.Drawing.Size(238, 50);
-            this.materialTextBox2.TabIndex = 3;
-            this.materialTextBox2.Text = "";
-            this.materialTextBox2.TrailingIcon = null;
+            this.txtNombreTitular.AnimateReadOnly = false;
+            this.txtNombreTitular.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreTitular.Depth = 0;
+            this.txtNombreTitular.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombreTitular.Hint = "Nombre Apellido del Titular";
+            this.txtNombreTitular.LeadingIcon = null;
+            this.txtNombreTitular.Location = new System.Drawing.Point(14, 64);
+            this.txtNombreTitular.MaxLength = 50;
+            this.txtNombreTitular.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtNombreTitular.Multiline = false;
+            this.txtNombreTitular.Name = "txtNombreTitular";
+            this.txtNombreTitular.Size = new System.Drawing.Size(238, 50);
+            this.txtNombreTitular.TabIndex = 3;
+            this.txtNombreTitular.Text = "";
+            this.txtNombreTitular.TrailingIcon = null;
             // 
             // tpEfectivo
             // 
@@ -342,7 +385,7 @@
             this.lblCantidadCaracteres.AutoSize = true;
             this.lblCantidadCaracteres.Depth = 0;
             this.lblCantidadCaracteres.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCantidadCaracteres.Location = new System.Drawing.Point(265, 210);
+            this.lblCantidadCaracteres.Location = new System.Drawing.Point(368, 210);
             this.lblCantidadCaracteres.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCantidadCaracteres.Name = "lblCantidadCaracteres";
             this.lblCantidadCaracteres.Size = new System.Drawing.Size(44, 19);
@@ -362,7 +405,7 @@
             this.txtReferencia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtReferencia.Multiline = false;
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(295, 50);
+            this.txtReferencia.Size = new System.Drawing.Size(398, 50);
             this.txtReferencia.TabIndex = 42;
             this.txtReferencia.Text = "";
             this.txtReferencia.TrailingIcon = null;
@@ -390,7 +433,7 @@
             this.cmbCiudades.MaxDropDownItems = 4;
             this.cmbCiudades.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbCiudades.Name = "cmbCiudades";
-            this.cmbCiudades.Size = new System.Drawing.Size(295, 49);
+            this.cmbCiudades.Size = new System.Drawing.Size(398, 49);
             this.cmbCiudades.StartIndex = 0;
             this.cmbCiudades.TabIndex = 41;
             // 
@@ -426,7 +469,7 @@
             this.txtCalle.SelectionLength = 0;
             this.txtCalle.SelectionStart = 0;
             this.txtCalle.ShortcutsEnabled = true;
-            this.txtCalle.Size = new System.Drawing.Size(295, 48);
+            this.txtCalle.Size = new System.Drawing.Size(398, 48);
             this.txtCalle.SkipLiterals = true;
             this.txtCalle.TabIndex = 40;
             this.txtCalle.TabStop = false;
@@ -477,49 +520,6 @@
             this.materialLabel2.Size = new System.Drawing.Size(232, 24);
             this.materialLabel2.TabIndex = 49;
             this.materialLabel2.Text = "¿Cuando queres recibirlo?";
-            // 
-            // txtNumeroTarjeta
-            // 
-            this.txtNumeroTarjeta.AllowPromptAsInput = true;
-            this.txtNumeroTarjeta.AnimateReadOnly = false;
-            this.txtNumeroTarjeta.AsciiOnly = false;
-            this.txtNumeroTarjeta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtNumeroTarjeta.BeepOnError = false;
-            this.txtNumeroTarjeta.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.txtNumeroTarjeta.Depth = 0;
-            this.txtNumeroTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNumeroTarjeta.HidePromptOnLeave = false;
-            this.txtNumeroTarjeta.HideSelection = true;
-            this.txtNumeroTarjeta.Hint = "Número Tarjeta";
-            this.txtNumeroTarjeta.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
-            this.txtNumeroTarjeta.LeadingIcon = null;
-            this.txtNumeroTarjeta.Location = new System.Drawing.Point(17, 10);
-            this.txtNumeroTarjeta.Mask = "0000-0000-0000-0000";
-            this.txtNumeroTarjeta.MaxLength = 32767;
-            this.txtNumeroTarjeta.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
-            this.txtNumeroTarjeta.PasswordChar = '\0';
-            this.txtNumeroTarjeta.PrefixSuffixText = null;
-            this.txtNumeroTarjeta.PromptChar = '_';
-            this.txtNumeroTarjeta.ReadOnly = false;
-            this.txtNumeroTarjeta.RejectInputOnFirstFailure = false;
-            this.txtNumeroTarjeta.ResetOnPrompt = true;
-            this.txtNumeroTarjeta.ResetOnSpace = true;
-            this.txtNumeroTarjeta.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNumeroTarjeta.SelectedText = "";
-            this.txtNumeroTarjeta.SelectionLength = 0;
-            this.txtNumeroTarjeta.SelectionStart = 0;
-            this.txtNumeroTarjeta.ShortcutsEnabled = true;
-            this.txtNumeroTarjeta.Size = new System.Drawing.Size(235, 48);
-            this.txtNumeroTarjeta.SkipLiterals = true;
-            this.txtNumeroTarjeta.TabIndex = 56;
-            this.txtNumeroTarjeta.TabStop = false;
-            this.txtNumeroTarjeta.Text = "    -    -    -";
-            this.txtNumeroTarjeta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNumeroTarjeta.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
-            this.txtNumeroTarjeta.TrailingIcon = null;
-            this.txtNumeroTarjeta.UseSystemPasswordChar = false;
-            this.txtNumeroTarjeta.ValidatingType = null;
             // 
             // dtpFechaVencimiento
             // 
@@ -572,7 +572,7 @@
         private MaterialSkin.Controls.MaterialRadioButton rdbFechaHoraRecepcion;
         private MaterialSkin.Controls.MaterialRadioButton rdbLoAntesPosible;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtMontoAPagar;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox txtNombreTitular;
         private MaterialSkin.Controls.MaterialLabel lblConCuantoVasAPagar;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialTabControl tclMetodoPago;
@@ -580,7 +580,7 @@
         private System.Windows.Forms.TabPage tpEfectivo;
         private System.Windows.Forms.DateTimePicker dtpFechaHoraRecepcion;
         private ControlesPersonalizados.RJDatePicker dtpFechaVencimiento;
-        private MaterialSkin.Controls.MaterialMaskedTextBox materialMaskedTextBox2;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtCvc;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtNumeroTarjeta;
     }

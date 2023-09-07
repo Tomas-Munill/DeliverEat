@@ -36,6 +36,9 @@
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -56,6 +59,14 @@
     <Compile Include="ControlesPersonalizados\RJDatePicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Entidades\Ciudad.cs" />
+    <Compile Include="Entidades\DetallePedido.cs" />
+    <Compile Include="Entidades\Direccion.cs" />
+    <Compile Include="Entidades\Efectivo.cs" />
+    <Compile Include="Entidades\IMetodoPago.cs" />
+    <Compile Include="Entidades\Pedido.cs" />
+    <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\TarjetaCredito.cs" />
     <Compile Include="InterfacesDeUsuario\FrmRealizarPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\PedidoRepositorio.cs" />
+    <Compile Include="Repositorios\Persistencia.cs" />
+    <Compile Include="Servicios\GestorPedido.cs" />
     <EmbeddedResource Include="InterfacesDeUsuario\FrmRealizarPedido.resx">
       <DependentUpon>FrmRealizarPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,11 +105,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entidades\" />
-    <Folder Include="Repositorios\" />
-    <Folder Include="Servicios\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\calendarDark.png" />
   </ItemGroup>
