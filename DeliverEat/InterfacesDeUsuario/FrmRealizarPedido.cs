@@ -71,7 +71,7 @@ namespace DeliverEat
         {
             string mensaje = "";
             // Validar que calle y numero sea alfanumerico
-            Regex regex = new Regex("^[0-9a-zA-Z ]+$");
+            Regex regex = new Regex("^[0-9\\p{L} ]+$");
             if (!regex.IsMatch(txtCalle.Text))
             {
                 mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
@@ -84,9 +84,21 @@ namespace DeliverEat
                 {
                     mensaje += "Las horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.";
                 }
+                if (dtpFechaHoraRecepcion.Value < DateTime.Now)
+                {
+                    mensaje += "No se puede planificar un pedido para una hora menor a la actual";
+                }
             }
 
             // Validar tarjeta visa
+            if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpTarjeta"])
+            {
+                if (!ValidarTarjetaVisa(txtNumeroTarjeta.Text))
+                {
+                    mensaje += "La tarjeta ingresada no es valida";
+                }
+            }
+
 
             // Validar monto en efectivo a abonar mayor al monto del pedido
             
@@ -102,6 +114,51 @@ namespace DeliverEat
                 MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Tu pedido ha sido confirmado!", 2000);
                 SnackBarMessage.Show(this);
             }
+        }
+
+        private bool ValidarTarjetaVisa(string numero)
+        {
+            bool resultado = true;
+            Regex expresion = new Regex("\\b4\\d{3}-\\d{4}-\\d{4}-\\d{4}\\b");
+            if (!expresion.IsMatch(numero)){
+                resultado = false;
+            }
+
+            return ValidarLuhn(numero) && resultado;
+           
+        }
+
+        private bool ValidarLuhn(string numero)
+        {
+            int sum = 0;
+            bool alternate = false;
+
+            // Recorre los dígitos de derecha a izquierda
+            for (int i = numero.Length - 1; i >= 0; i--)
+            {
+                if (numero[i] == '-')
+                    continue;
+
+                int digit = int.Parse(numero[i].ToString());
+
+
+
+                if (alternate)
+                {
+                    // Duplica el dígito y ajusta si es mayor o igual a 10
+                    digit *= 2;
+                    if (digit >= 10)
+                    {
+                        digit -= 9;
+                    }
+                }
+
+                sum += digit;
+                alternate = !alternate;
+            }
+
+            // El número es válido si la suma es un múltiplo de 10
+            return sum % 10 == 0;
         }
     }
 }

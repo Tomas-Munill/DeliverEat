@@ -31,14 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtpFechaHoraRecepcion = new System.Windows.Forms.DateTimePicker();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.tpEfectivo = new MaterialSkin.Controls.MaterialTabControl();
+            this.tclMetodoPago = new MaterialSkin.Controls.MaterialTabControl();
             this.tpTarjeta = new System.Windows.Forms.TabPage();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialMaskedTextBox2 = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
             this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpEfectivo = new System.Windows.Forms.TabPage();
             this.lblConCuantoVasAPagar = new MaterialSkin.Controls.MaterialLabel();
             this.txtMontoAPagar = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.rdbFechaHoraRecepcion = new MaterialSkin.Controls.MaterialRadioButton();
@@ -52,10 +50,12 @@
             this.btnConfirmar = new MaterialSkin.Controls.MaterialButton();
             this.label1 = new System.Windows.Forms.Label();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtNumeroTarjeta = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
             this.panel1.SuspendLayout();
-            this.tpEfectivo.SuspendLayout();
+            this.tclMetodoPago.SuspendLayout();
             this.tpTarjeta.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpEfectivo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,7 +64,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
             this.panel1.Controls.Add(this.dtpFechaHoraRecepcion);
             this.panel1.Controls.Add(this.materialTabSelector1);
-            this.panel1.Controls.Add(this.tpEfectivo);
+            this.panel1.Controls.Add(this.tclMetodoPago);
             this.panel1.Controls.Add(this.rdbFechaHoraRecepcion);
             this.panel1.Controls.Add(this.rdbLoAntesPosible);
             this.panel1.Controls.Add(this.materialLabel1);
@@ -96,10 +96,10 @@
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.tpEfectivo;
+            this.materialTabSelector1.BaseTabControl = this.tclMetodoPago;
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector1.Location = new System.Drawing.Point(16, 268);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
@@ -107,26 +107,26 @@
             this.materialTabSelector1.TabIndex = 53;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // tpEfectivo
+            // tclMetodoPago
             // 
-            this.tpEfectivo.Controls.Add(this.tpTarjeta);
-            this.tpEfectivo.Controls.Add(this.tabPage2);
-            this.tpEfectivo.Depth = 0;
-            this.tpEfectivo.Location = new System.Drawing.Point(16, 322);
-            this.tpEfectivo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tpEfectivo.Multiline = true;
-            this.tpEfectivo.Name = "tpEfectivo";
-            this.tpEfectivo.SelectedIndex = 0;
-            this.tpEfectivo.Size = new System.Drawing.Size(400, 160);
-            this.tpEfectivo.TabIndex = 52;
+            this.tclMetodoPago.Controls.Add(this.tpTarjeta);
+            this.tclMetodoPago.Controls.Add(this.tpEfectivo);
+            this.tclMetodoPago.Depth = 0;
+            this.tclMetodoPago.Location = new System.Drawing.Point(16, 322);
+            this.tclMetodoPago.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tclMetodoPago.Multiline = true;
+            this.tclMetodoPago.Name = "tclMetodoPago";
+            this.tclMetodoPago.SelectedIndex = 0;
+            this.tclMetodoPago.Size = new System.Drawing.Size(400, 160);
+            this.tclMetodoPago.TabIndex = 52;
             // 
             // tpTarjeta
             // 
+            this.tpTarjeta.Controls.Add(this.txtNumeroTarjeta);
             this.tpTarjeta.Controls.Add(this.materialLabel3);
             this.tpTarjeta.Controls.Add(this.materialMaskedTextBox2);
             this.tpTarjeta.Controls.Add(this.dtpFechaVencimiento);
             this.tpTarjeta.Controls.Add(this.materialTextBox2);
-            this.tpTarjeta.Controls.Add(this.materialTextBox1);
             this.tpTarjeta.Location = new System.Drawing.Point(4, 22);
             this.tpTarjeta.Name = "tpTarjeta";
             this.tpTarjeta.Padding = new System.Windows.Forms.Padding(3);
@@ -191,27 +191,12 @@
             this.materialMaskedTextBox2.UseSystemPasswordChar = false;
             this.materialMaskedTextBox2.ValidatingType = null;
             // 
-            // dtpFechaVencimiento
-            // 
-            this.dtpFechaVencimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.dtpFechaVencimiento.BorderSize = 1;
-            this.dtpFechaVencimiento.CustomFormat = "MM/yyyy";
-            this.dtpFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(271, 79);
-            this.dtpFechaVencimiento.MinimumSize = new System.Drawing.Size(4, 35);
-            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
-            this.dtpFechaVencimiento.Size = new System.Drawing.Size(115, 35);
-            this.dtpFechaVencimiento.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.dtpFechaVencimiento.TabIndex = 5;
-            this.dtpFechaVencimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            // 
             // materialTextBox2
             // 
             this.materialTextBox2.AnimateReadOnly = false;
             this.materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox2.Depth = 0;
-            this.materialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox2.Hint = "Nombre Apellido del Titular";
             this.materialTextBox2.LeadingIcon = null;
             this.materialTextBox2.Location = new System.Drawing.Point(14, 64);
@@ -224,35 +209,17 @@
             this.materialTextBox2.Text = "";
             this.materialTextBox2.TrailingIcon = null;
             // 
-            // materialTextBox1
+            // tpEfectivo
             // 
-            this.materialTextBox1.AnimateReadOnly = false;
-            this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox1.Hint = "Número tarjeta";
-            this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(14, 8);
-            this.materialTextBox1.MaxLength = 50;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Multiline = false;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(238, 50);
-            this.materialTextBox1.TabIndex = 2;
-            this.materialTextBox1.Text = "";
-            this.materialTextBox1.TrailingIcon = null;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lblConCuantoVasAPagar);
-            this.tabPage2.Controls.Add(this.txtMontoAPagar);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(392, 134);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Efectivo";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpEfectivo.Controls.Add(this.lblConCuantoVasAPagar);
+            this.tpEfectivo.Controls.Add(this.txtMontoAPagar);
+            this.tpEfectivo.Location = new System.Drawing.Point(4, 22);
+            this.tpEfectivo.Name = "tpEfectivo";
+            this.tpEfectivo.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEfectivo.Size = new System.Drawing.Size(392, 134);
+            this.tpEfectivo.TabIndex = 1;
+            this.tpEfectivo.Text = "Efectivo";
+            this.tpEfectivo.UseVisualStyleBackColor = true;
             // 
             // lblConCuantoVasAPagar
             // 
@@ -387,7 +354,7 @@
             this.txtReferencia.AnimateReadOnly = false;
             this.txtReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReferencia.Depth = 0;
-            this.txtReferencia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtReferencia.Hint = "Referencia (opcional)";
             this.txtReferencia.LeadingIcon = null;
             this.txtReferencia.Location = new System.Drawing.Point(14, 157);
@@ -511,6 +478,64 @@
             this.materialLabel2.TabIndex = 49;
             this.materialLabel2.Text = "¿Cuando queres recibirlo?";
             // 
+            // txtNumeroTarjeta
+            // 
+            this.txtNumeroTarjeta.AllowPromptAsInput = true;
+            this.txtNumeroTarjeta.AnimateReadOnly = false;
+            this.txtNumeroTarjeta.AsciiOnly = false;
+            this.txtNumeroTarjeta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtNumeroTarjeta.BeepOnError = false;
+            this.txtNumeroTarjeta.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtNumeroTarjeta.Depth = 0;
+            this.txtNumeroTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNumeroTarjeta.HidePromptOnLeave = false;
+            this.txtNumeroTarjeta.HideSelection = true;
+            this.txtNumeroTarjeta.Hint = "Número Tarjeta";
+            this.txtNumeroTarjeta.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.txtNumeroTarjeta.LeadingIcon = null;
+            this.txtNumeroTarjeta.Location = new System.Drawing.Point(17, 10);
+            this.txtNumeroTarjeta.Mask = "0000-0000-0000-0000";
+            this.txtNumeroTarjeta.MaxLength = 32767;
+            this.txtNumeroTarjeta.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtNumeroTarjeta.Name = "txtNumeroTarjeta";
+            this.txtNumeroTarjeta.PasswordChar = '\0';
+            this.txtNumeroTarjeta.PrefixSuffixText = null;
+            this.txtNumeroTarjeta.PromptChar = '_';
+            this.txtNumeroTarjeta.ReadOnly = false;
+            this.txtNumeroTarjeta.RejectInputOnFirstFailure = false;
+            this.txtNumeroTarjeta.ResetOnPrompt = true;
+            this.txtNumeroTarjeta.ResetOnSpace = true;
+            this.txtNumeroTarjeta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtNumeroTarjeta.SelectedText = "";
+            this.txtNumeroTarjeta.SelectionLength = 0;
+            this.txtNumeroTarjeta.SelectionStart = 0;
+            this.txtNumeroTarjeta.ShortcutsEnabled = true;
+            this.txtNumeroTarjeta.Size = new System.Drawing.Size(235, 48);
+            this.txtNumeroTarjeta.SkipLiterals = true;
+            this.txtNumeroTarjeta.TabIndex = 56;
+            this.txtNumeroTarjeta.TabStop = false;
+            this.txtNumeroTarjeta.Text = "    -    -    -";
+            this.txtNumeroTarjeta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNumeroTarjeta.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtNumeroTarjeta.TrailingIcon = null;
+            this.txtNumeroTarjeta.UseSystemPasswordChar = false;
+            this.txtNumeroTarjeta.ValidatingType = null;
+            // 
+            // dtpFechaVencimiento
+            // 
+            this.dtpFechaVencimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.dtpFechaVencimiento.BorderSize = 1;
+            this.dtpFechaVencimiento.CustomFormat = "MM/yyyy";
+            this.dtpFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(271, 79);
+            this.dtpFechaVencimiento.MinimumSize = new System.Drawing.Size(4, 35);
+            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(115, 35);
+            this.dtpFechaVencimiento.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.dtpFechaVencimiento.TabIndex = 5;
+            this.dtpFechaVencimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            // 
             // FrmRealizarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,11 +548,11 @@
             this.Load += new System.EventHandler(this.FrmRealizarPedido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tpEfectivo.ResumeLayout(false);
+            this.tclMetodoPago.ResumeLayout(false);
             this.tpTarjeta.ResumeLayout(false);
             this.tpTarjeta.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tpEfectivo.ResumeLayout(false);
+            this.tpEfectivo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -548,16 +573,16 @@
         private MaterialSkin.Controls.MaterialRadioButton rdbLoAntesPosible;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtMontoAPagar;
         private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
         private MaterialSkin.Controls.MaterialLabel lblConCuantoVasAPagar;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl tpEfectivo;
+        private MaterialSkin.Controls.MaterialTabControl tclMetodoPago;
         private System.Windows.Forms.TabPage tpTarjeta;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpEfectivo;
         private System.Windows.Forms.DateTimePicker dtpFechaHoraRecepcion;
         private ControlesPersonalizados.RJDatePicker dtpFechaVencimiento;
         private MaterialSkin.Controls.MaterialMaskedTextBox materialMaskedTextBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtNumeroTarjeta;
     }
 }
 
