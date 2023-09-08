@@ -16,6 +16,7 @@ namespace DeliverEat.Entidades
         {
             this.Nombre = nombre;
             this.Descripcion = descripcion;
+            this.Precio = precio;
         }
 
         

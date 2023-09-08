@@ -15,11 +15,13 @@ namespace DeliverEat.Repositorios
     public class Repository<T> : List<T> where T : class
     {
         private string filePath;
+        private JsonSerializerSettings jset;
 
         public Repository(string filePath)
         {
             this.filePath = filePath;
             string datos = Path.Combine(Environment.CurrentDirectory, @"Datos");
+            jset = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
 
 
             if (!Directory.Exists(datos))
@@ -42,7 +44,7 @@ namespace DeliverEat.Repositorios
             if (contents == null)
                 return;
 
-            T[] values = JsonConvert.DeserializeObject<T[]>(contents);
+            T[] values = JsonConvert.DeserializeObject<T[]>(contents, jset);
 
             if (values != null)
                 AddRange(values);
@@ -50,7 +52,7 @@ namespace DeliverEat.Repositorios
 
         public void Commit()
         {
-            string serialized = JsonConvert.SerializeObject(ToArray());
+            string serialized = JsonConvert.SerializeObject(ToArray(), jset);
 
             using (StreamWriter sw = new StreamWriter(filePath))
             {

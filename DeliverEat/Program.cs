@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeliverEat.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace DeliverEat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmRealizarPedido(new Servicios.GestorPedido()));
+            //Application.Run(new FrmRealizarPedido(new Servicios.GestorPedido()));
+            new GestorPedido();
         }
     }
 }

@@ -31,6 +31,10 @@ namespace DeliverEat.Servicios
             // crear archivo repositorio
             pedidoRepositorio = new PedidoRepositorio();
 
+            // ejecutar form
+            FrmRealizarPedido frmRealizarPedido = new FrmRealizarPedido(this);
+            frmRealizarPedido.ShowDialog();
+
 
         }
 
