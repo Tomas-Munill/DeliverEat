@@ -58,22 +58,20 @@ namespace DeliverEat.Servicios
         public void CancelarPedido()
         {
             this.frmRealizarPedido.Dispose();
-            this.frmPrincipal = new FrmPrincipal(this);
-            this.frmPrincipal.ShowDialog();
+            this.frmPrincipal.Show();
         }
 
         public void ConfirmarPedido()
         {
             this.frmRealizarPedido = new FrmRealizarPedido(this);
-            this.frmPrincipal.Dispose();
+            this.frmPrincipal.Hide();
             this.frmRealizarPedido.ShowDialog();
         }
 
         public void RegistrarPedido()
         {
             this.frmRealizarPedido.Dispose();
-            this.frmPrincipal = new FrmPrincipal(this);
-            this.frmPrincipal.ShowDialog();
+            this.frmPrincipal.Show();
 
             frmPrincipal.MostrarConfirmacion();
         }

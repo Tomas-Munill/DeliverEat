@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,21 @@ namespace DeliverEat
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Pink100, Primary.Pink200, Primary.Indigo100, Accent.Indigo100, TextShade.BLACK);
 
             this.gestorPedido = gestor;
+
+            // cargar total
+            lblPrecioTotal.Text = this.CalcularTotal().ToString("C2");
+        }
+
+        private double CalcularTotal()
+        {
+            List<DetallePedido> detalles = gestorPedido.CargarCarrito();
+            double cantidad = 0;
+            foreach (var detalle in detalles)
+            {
+                cantidad += detalle.CalcularPrecio();
+            }
+            return cantidad;
+
         }
 
         private void FrmRealizarPedido_Load(object sender, EventArgs e)
@@ -91,7 +107,7 @@ namespace DeliverEat
                 }
                 if (dtpFechaHoraRecepcion.Value < DateTime.Now)
                 {
-                    mensaje += "\nNo se puede planificar un pedido para una hora menor a la actual";
+                    mensaje += "\nNo se puede planificar un pedido para una hora menor a la actual.";
                 }
             }
 
@@ -105,20 +121,40 @@ namespace DeliverEat
                 {
                     if (!ValidarTarjeta(numeroTarjeta))
                     {
-                        mensaje += "\nLa tarjeta ingresada no es valida";
+                        mensaje += "\nLa tarjeta ingresada no es valida.";
                     }
                 }
                 else
                 {
-                    mensaje += "\nDebe cargar todos los numeros de la Tarjeta";
+                    mensaje += "\nDebe cargar todos los numeros de la Tarjeta.";
                 }
 
             }
 
 
             // Validar monto en efectivo a abonar mayor al monto del pedido
+            if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
+            {
+                string texto = txtMontoAPagar.Text;
+                string cadenaFormateada = "";
 
+                for (int i = 0; i < texto.Length; i++)
+                {
+                    if (this.IsDigit(texto[i].ToString()))
+                        cadenaFormateada += texto[i].ToString();
+                    else if (texto[i] == ',')
+                        cadenaFormateada += ",";
+                    else if (texto[i] == ' ')
+                        continue;
+                }
 
+                double monto = Double.Parse(cadenaFormateada);
+
+                if (monto < this.CalcularTotal())
+                {
+                    mensaje += "\nLa cantidad abonada en efectivo debe ser mayor al precio total del carrito.";
+                }
+            }
 
             if (mensaje != "")
             {
@@ -127,14 +163,20 @@ namespace DeliverEat
             }
             else
             {
-                gestorPedido.RegistrarPedido();
                 GuardarDatos();
+                gestorPedido.RegistrarPedido();               
             }
 
+        }
 
+        private bool IsDigit(string input)
+        {
+            // Define la expresión regular para verificar si la cadena contiene solo dígitos.
+            Regex regex = new Regex(@"^\d+$");
 
-
-
+            // Usa el método Match para verificar si la cadena coincide con la expresión regular.
+            // Si coincide, significa que la cadena contiene solo dígitos.
+            return regex.IsMatch(input);
         }
 
         private bool ValidarTarjeta(string numero)
@@ -231,6 +273,11 @@ namespace DeliverEat
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.gestorPedido.CancelarPedido();
+        }
+
+        private void FrmRealizarPedido_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            gestorPedido.CancelarPedido();
         }
     }
 }
