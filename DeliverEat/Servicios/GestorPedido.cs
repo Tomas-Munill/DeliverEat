@@ -1,5 +1,7 @@
 ﻿using DeliverEat.Entidades;
+using DeliverEat.InterfacesDeUsuario;
 using DeliverEat.Repositorios;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace DeliverEat.Servicios
     {
         public List<DetallePedido> carrito { get; set; }
         private PedidoRepositorio pedidoRepositorio;
+        private FrmRealizarPedido frmRealizarPedido;
+        private FrmPrincipal frmPrincipal;
 
         public GestorPedido()
         {
@@ -32,8 +36,11 @@ namespace DeliverEat.Servicios
             pedidoRepositorio = new PedidoRepositorio();
 
             // ejecutar form
-            FrmRealizarPedido frmRealizarPedido = new FrmRealizarPedido(this);
-            frmRealizarPedido.ShowDialog();
+            frmPrincipal = new FrmPrincipal(this);
+            frmPrincipal.ShowDialog();
+
+            //frmRealizarPedido = new FrmRealizarPedido(this);
+            //frmRealizarPedido.ShowDialog();
 
 
         }
@@ -46,6 +53,29 @@ namespace DeliverEat.Servicios
         public void GuardarPedido(Pedido pedido)
         {
             pedidoRepositorio.InsertarPedido(pedido);
+        }
+
+        public void CancelarPedido()
+        {
+            this.frmRealizarPedido.Dispose();
+            this.frmPrincipal = new FrmPrincipal(this);
+            this.frmPrincipal.ShowDialog();
+        }
+
+        public void ConfirmarPedido()
+        {
+            this.frmRealizarPedido = new FrmRealizarPedido(this);
+            this.frmPrincipal.Dispose();
+            this.frmRealizarPedido.ShowDialog();
+        }
+
+        public void RegistrarPedido()
+        {
+            this.frmRealizarPedido.Dispose();
+            this.frmPrincipal = new FrmPrincipal(this);
+            this.frmPrincipal.ShowDialog();
+
+            frmPrincipal.MostrarConfirmacion();
         }
     }
 }

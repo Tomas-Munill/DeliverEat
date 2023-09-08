@@ -127,8 +127,7 @@ namespace DeliverEat
             }
             else
             {
-                MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Tu pedido ha sido confirmado!", 2000);
-                SnackBarMessage.Show(this);
+                gestorPedido.RegistrarPedido();
                 GuardarDatos();
             }
 
@@ -227,6 +226,11 @@ namespace DeliverEat
             gestorPedido.GuardarPedido(pedido);
 
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.gestorPedido.CancelarPedido();
         }
     }
 }

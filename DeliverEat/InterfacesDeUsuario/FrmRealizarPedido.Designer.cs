@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.dtpFechaHoraRecepcion = new System.Windows.Forms.DateTimePicker();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tclMetodoPago = new MaterialSkin.Controls.MaterialTabControl();
@@ -62,6 +63,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.dtpFechaHoraRecepcion);
             this.panel1.Controls.Add(this.materialTabSelector1);
             this.panel1.Controls.Add(this.tclMetodoPago);
@@ -80,15 +82,36 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(137)))), ((int)(((byte)(184)))));
             this.panel1.Location = new System.Drawing.Point(3, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 721);
+            this.panel1.Size = new System.Drawing.Size(442, 721);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.AutoSize = false;
+            this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCancelar.Depth = 0;
+            this.btnCancelar.HighEmphasis = false;
+            this.btnCancelar.Icon = null;
+            this.btnCancelar.Location = new System.Drawing.Point(94, 717);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCancelar.Size = new System.Drawing.Size(250, 36);
+            this.btnCancelar.TabIndex = 56;
+            this.btnCancelar.Text = "cancelar";
+            this.btnCancelar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCancelar.UseAccentColor = false;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // dtpFechaHoraRecepcion
             // 
             this.dtpFechaHoraRecepcion.CustomFormat = "dd/MM HH:mm";
             this.dtpFechaHoraRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaHoraRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(20, 612);
+            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(117, 609);
             this.dtpFechaHoraRecepcion.Name = "dtpFechaHoraRecepcion";
             this.dtpFechaHoraRecepcion.Size = new System.Drawing.Size(205, 29);
             this.dtpFechaHoraRecepcion.TabIndex = 55;
@@ -100,7 +123,7 @@
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTabSelector1.Location = new System.Drawing.Point(16, 268);
+            this.materialTabSelector1.Location = new System.Drawing.Point(19, 265);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(396, 48);
@@ -112,7 +135,7 @@
             this.tclMetodoPago.Controls.Add(this.tpTarjeta);
             this.tclMetodoPago.Controls.Add(this.tpEfectivo);
             this.tclMetodoPago.Depth = 0;
-            this.tclMetodoPago.Location = new System.Drawing.Point(16, 322);
+            this.tclMetodoPago.Location = new System.Drawing.Point(19, 319);
             this.tclMetodoPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.tclMetodoPago.Multiline = true;
             this.tclMetodoPago.Name = "tclMetodoPago";
@@ -324,7 +347,7 @@
             // 
             this.rdbFechaHoraRecepcion.AutoSize = true;
             this.rdbFechaHoraRecepcion.Depth = 0;
-            this.rdbFechaHoraRecepcion.Location = new System.Drawing.Point(14, 572);
+            this.rdbFechaHoraRecepcion.Location = new System.Drawing.Point(17, 569);
             this.rdbFechaHoraRecepcion.Margin = new System.Windows.Forms.Padding(0);
             this.rdbFechaHoraRecepcion.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rdbFechaHoraRecepcion.MouseState = MaterialSkin.MouseState.HOVER;
@@ -342,7 +365,7 @@
             this.rdbLoAntesPosible.AutoSize = true;
             this.rdbLoAntesPosible.Checked = true;
             this.rdbLoAntesPosible.Depth = 0;
-            this.rdbLoAntesPosible.Location = new System.Drawing.Point(14, 535);
+            this.rdbLoAntesPosible.Location = new System.Drawing.Point(17, 532);
             this.rdbLoAntesPosible.Margin = new System.Windows.Forms.Padding(0);
             this.rdbLoAntesPosible.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rdbLoAntesPosible.MouseState = MaterialSkin.MouseState.HOVER;
@@ -360,7 +383,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel1.Location = new System.Drawing.Point(10, 232);
+            this.materialLabel1.Location = new System.Drawing.Point(13, 229);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(216, 24);
@@ -373,7 +396,7 @@
             this.lblCompletaDireccion.Depth = 0;
             this.lblCompletaDireccion.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblCompletaDireccion.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.lblCompletaDireccion.Location = new System.Drawing.Point(10, 12);
+            this.lblCompletaDireccion.Location = new System.Drawing.Point(13, 9);
             this.lblCompletaDireccion.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCompletaDireccion.Name = "lblCompletaDireccion";
             this.lblCompletaDireccion.Size = new System.Drawing.Size(196, 24);
@@ -385,7 +408,7 @@
             this.lblCantidadCaracteres.AutoSize = true;
             this.lblCantidadCaracteres.Depth = 0;
             this.lblCantidadCaracteres.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCantidadCaracteres.Location = new System.Drawing.Point(368, 210);
+            this.lblCantidadCaracteres.Location = new System.Drawing.Point(371, 207);
             this.lblCantidadCaracteres.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCantidadCaracteres.Name = "lblCantidadCaracteres";
             this.lblCantidadCaracteres.Size = new System.Drawing.Size(44, 19);
@@ -400,7 +423,7 @@
             this.txtReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtReferencia.Hint = "Referencia (opcional)";
             this.txtReferencia.LeadingIcon = null;
-            this.txtReferencia.Location = new System.Drawing.Point(14, 157);
+            this.txtReferencia.Location = new System.Drawing.Point(17, 154);
             this.txtReferencia.MaxLength = 240;
             this.txtReferencia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtReferencia.Multiline = false;
@@ -429,7 +452,7 @@
             this.cmbCiudades.Items.AddRange(new object[] {
             "Carlos Paz",
             "Córdoba"});
-            this.cmbCiudades.Location = new System.Drawing.Point(14, 102);
+            this.cmbCiudades.Location = new System.Drawing.Point(17, 99);
             this.cmbCiudades.MaxDropDownItems = 4;
             this.cmbCiudades.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbCiudades.Name = "cmbCiudades";
@@ -452,7 +475,7 @@
             this.txtCalle.Hint = "Calle y número";
             this.txtCalle.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
             this.txtCalle.LeadingIcon = null;
-            this.txtCalle.Location = new System.Drawing.Point(14, 48);
+            this.txtCalle.Location = new System.Drawing.Point(17, 45);
             this.txtCalle.Mask = "";
             this.txtCalle.MaxLength = 32767;
             this.txtCalle.MouseState = MaterialSkin.MouseState.OUT;
@@ -481,17 +504,18 @@
             // 
             // btnConfirmar
             // 
+            this.btnConfirmar.AutoSize = false;
             this.btnConfirmar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnConfirmar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnConfirmar.Depth = 0;
             this.btnConfirmar.HighEmphasis = true;
             this.btnConfirmar.Icon = null;
-            this.btnConfirmar.Location = new System.Drawing.Point(472, 572);
+            this.btnConfirmar.Location = new System.Drawing.Point(94, 669);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnConfirmar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnConfirmar.Size = new System.Drawing.Size(105, 36);
+            this.btnConfirmar.Size = new System.Drawing.Size(250, 36);
             this.btnConfirmar.TabIndex = 39;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -502,7 +526,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 740);
+            this.label1.Location = new System.Drawing.Point(190, 836);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -514,7 +538,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel2.Location = new System.Drawing.Point(16, 511);
+            this.materialLabel2.Location = new System.Drawing.Point(19, 508);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(232, 24);
@@ -541,7 +565,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 788);
+            this.ClientSize = new System.Drawing.Size(448, 788);
             this.Controls.Add(this.panel1);
             this.Name = "FrmRealizarPedido";
             this.Text = "DeliverEat - Realizar Pedido ";
@@ -583,6 +607,7 @@
         private MaterialSkin.Controls.MaterialMaskedTextBox txtCvc;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtNumeroTarjeta;
+        private MaterialSkin.Controls.MaterialButton btnCancelar;
     }
 }
 
