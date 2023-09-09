@@ -19,9 +19,9 @@ namespace DeliverEat.Servicios
 
         public GestorPedido()
         {
-            Producto lomito = new Producto("Lomito Completo", 2250, "Lomito completo con papas");
+            Producto lomito = new Producto("Lomito", 2250, "Lomito completo con papas");
             Producto gaseosa = new Producto("Pepsi", 500, "Gaseosa tamaño medio");
-            Producto hamburguesa = new Producto("Hamburguesa doble con queso", 1700, "Hamburguesa con medallon premium");
+            Producto hamburguesa = new Producto("Hamburguesa", 1700, "Hamburguesa con medallon premium");
 
             DetallePedido detalleLomito = new DetallePedido(lomito, 2);
             DetallePedido detalleGaseosa = new DetallePedido(gaseosa, 3);
@@ -57,7 +57,7 @@ namespace DeliverEat.Servicios
 
         public void CancelarPedido()
         {
-            this.frmRealizarPedido.Dispose();
+            this.frmRealizarPedido.Hide();
             this.frmPrincipal.Show();
         }
 

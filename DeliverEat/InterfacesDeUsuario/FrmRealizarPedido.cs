@@ -56,13 +56,7 @@ namespace DeliverEat
 
             dtpFechaHoraRecepcion.MinDate = fechaActual;
             dtpFechaHoraRecepcion.MaxDate = fechaHasta;
-
-        }
-
-
-        private void ClearAll()
-        {
-
+            dtpFechaVencimiento.MinDate = fechaActual;
 
         }
 
@@ -93,9 +87,14 @@ namespace DeliverEat
             string mensaje = "";
             // Validar que calle y numero sea alfanumerico
             Regex regex = new Regex("^[0-9\\p{L} ]+$");
-            if (!regex.IsMatch(txtCalle.Text))
+
+            if (txtCalle.Text == "")
             {
-                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
+                mensaje += "Debe cargar el nombre y numero de la calle";
+            }
+            else if (!regex.IsMatch(txtCalle.Text))
+            {
+                mensaje += "\nEl campo calle y número debe contener solo caracteres alfanumericos.";
             }
 
             // Validar horario de fecha hora recepcion
@@ -111,11 +110,10 @@ namespace DeliverEat
                 }
             }
 
-            string numeroTarjeta = txtNumeroTarjeta.Text.Replace(" ", "");
-
             // Validar tarjeta visa
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpTarjeta"])
             {
+                string numeroTarjeta = txtNumeroTarjeta.Text.Replace(" ", "");
                 //if (!numeroTarjeta.Contains(" "))
                 if (numeroTarjeta.Length == 19)
                 {
@@ -129,31 +127,44 @@ namespace DeliverEat
                     mensaje += "\nDebe cargar todos los numeros de la Tarjeta.";
                 }
 
-            }
+                // validar campo cvc
+                string textoCvc = txtCvc.Text.Trim().Replace(" ", "");
 
+                if (textoCvc == "")
+                {
+                    mensaje += "\nDebe cargar el codigo CVC";
+                }
+                else if (textoCvc.Length != 3)
+                {
+                    mensaje += "\nEl codigo CVC debe tener 3 digitos";
+                }
+
+                // validar nombre en la tarjeta
+                if (txtNombreTitular.Text == "")
+                {
+                    mensaje += "\nDebe cargar el nombre del titular";
+                }
+            }
 
             // Validar monto en efectivo a abonar mayor al monto del pedido
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
             {
-                string texto = txtMontoAPagar.Text;
-                string cadenaFormateada = "";
-
-                for (int i = 0; i < texto.Length; i++)
+                string texto = txtMontoAPagar.Text.Trim();
+                if (txtMontoAPagar.Text != "$   .   ,")
                 {
-                    if (this.IsDigit(texto[i].ToString()))
-                        cadenaFormateada += texto[i].ToString();
-                    else if (texto[i] == ',')
-                        cadenaFormateada += ",";
-                    else if (texto[i] == ' ')
-                        continue;
+                    double monto = ConvertirMonto();
+
+                    if (monto < this.CalcularTotal())
+                    {
+                        mensaje += "\nLa cantidad abonada en efectivo debe ser mayor al precio total\ndel carrito.";
+                    }
+                }
+                else
+                {
+                    mensaje += "\nDebe cargar el monto con el que va a abonar";
                 }
 
-                double monto = Double.Parse(cadenaFormateada);
-
-                if (monto < this.CalcularTotal())
-                {
-                    mensaje += "\nLa cantidad abonada en efectivo debe ser mayor al precio total del carrito.";
-                }
+                
             }
 
             if (mensaje != "")
@@ -167,6 +178,26 @@ namespace DeliverEat
                 gestorPedido.RegistrarPedido();               
             }
 
+        }
+
+        // convertir el maskedtextbox a double
+        private double ConvertirMonto()
+        {
+            string texto = txtMontoAPagar.Text;
+            string cadenaFormateada = "";
+
+            for (int i = 0; i < texto.Length; i++)
+            {
+                if (this.IsDigit(texto[i].ToString()))
+                    cadenaFormateada += texto[i].ToString();
+                else if (texto[i] == ',')
+                    cadenaFormateada += ",";
+                else if (texto[i] == ' ')
+                    continue;
+            }
+
+            double monto = Double.Parse(cadenaFormateada);
+            return monto;
         }
 
         private bool IsDigit(string input)
@@ -243,7 +274,7 @@ namespace DeliverEat
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
             {
                 Efectivo efectivo = new Efectivo();
-                efectivo.MontoQueAbona = Convert.ToDouble(txtMontoAPagar.Text);
+                efectivo.MontoQueAbona = ConvertirMonto();
                 pedido.MetodoPago = efectivo;
             }
             else
@@ -251,7 +282,7 @@ namespace DeliverEat
 
                 TarjetaCredito tarjeta = new TarjetaCredito();
                 tarjeta.numero = txtNumeroTarjeta.Text;
-                tarjeta.cvc = txtCvc.Text;
+                tarjeta.cvc = txtCvc.Text.Trim();
                 tarjeta.fechaVencimiento = dtpFechaVencimiento.Value;
                 tarjeta.nombreApellidoTitular = txtNombreTitular.Text;
                 pedido.MetodoPago = tarjeta;
@@ -272,12 +303,18 @@ namespace DeliverEat
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.gestorPedido.CancelarPedido();
+            MaterialDialog materialDialog = new MaterialDialog(this, "Cancelar pedido", "¿Está seguro de que quiere cancelar el pedido?", "OK", true, "Cancel");
+            DialogResult result = materialDialog.ShowDialog(this);
+
+            if (result.ToString() == "OK")
+            {
+                this.gestorPedido.CancelarPedido();
+            }
         }
 
         private void FrmRealizarPedido_FormClosing(object sender, FormClosingEventArgs e)
         {
-            gestorPedido.CancelarPedido();
+            // acasa pete
         }
     }
 }

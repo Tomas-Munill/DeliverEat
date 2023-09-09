@@ -93,9 +93,9 @@ namespace DeliverEat.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap home64 {
+        internal static System.Drawing.Bitmap home24 {
             get {
-                object obj = ResourceManager.GetObject("home64", resourceCulture);
+                object obj = ResourceManager.GetObject("home24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace DeliverEat.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap shoppingcart64 {
+        internal static System.Drawing.Bitmap shoppingcart24 {
             get {
-                object obj = ResourceManager.GetObject("shoppingcart64", resourceCulture);
+                object obj = ResourceManager.GetObject("shoppingcart24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

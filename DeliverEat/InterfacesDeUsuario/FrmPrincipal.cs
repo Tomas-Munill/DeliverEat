@@ -29,6 +29,8 @@ namespace DeliverEat.InterfacesDeUsuario
 
             this.gestorPedido = gestor;
             CargarCarrito();
+
+            lblPrecioTotal.Text = CalcularTotal().ToString("c2");
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -42,6 +44,18 @@ namespace DeliverEat.InterfacesDeUsuario
             }
         }
 
+        private double CalcularTotal()
+        {
+            List<DetallePedido> detalles = gestorPedido.CargarCarrito();
+            double cantidad = 0;
+            foreach (var detalle in detalles)
+            {
+                cantidad += detalle.CalcularPrecio();
+            }
+            return cantidad;
+
+        }
+
         private void CargarCarrito()
         {
             List<DetallePedido> carrito = gestorPedido.CargarCarrito();
@@ -52,6 +66,10 @@ namespace DeliverEat.InterfacesDeUsuario
                 detalle.producto.Precio.ToString("C2"), detalle.CalcularPrecio().ToString("c2")});
                 lstCarrito.Items.Add(item);
             }
+
+            lblPrecioTotal.Visible = true;
+            lblPagar.Visible = true;
+            lblPrecioTotal.Text = CalcularTotal().ToString("c2");
 
         }
 
@@ -64,6 +82,8 @@ namespace DeliverEat.InterfacesDeUsuario
         private void btnLimpiarCarrito_Click(object sender, EventArgs e)
         {
             lstCarrito.Items.Clear();
+            lblPrecioTotal.Visible = false;
+            lblPagar.Visible = false;
         }
 
         private void btnCargarCarrito_Click(object sender, EventArgs e)
