@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,21 @@ namespace DeliverEat
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Pink100, Primary.Pink200, Primary.Indigo100, Accent.Indigo100, TextShade.BLACK);
 
             this.gestorPedido = gestor;
+
+            // cargar total
+            lblPrecioTotal.Text = this.CalcularTotal().ToString("C2");
+        }
+
+        private double CalcularTotal()
+        {
+            List<DetallePedido> detalles = gestorPedido.CargarCarrito();
+            double cantidad = 0;
+            foreach (var detalle in detalles)
+            {
+                cantidad += detalle.CalcularPrecio();
+            }
+            return cantidad;
+
         }
 
         private void FrmRealizarPedido_Load(object sender, EventArgs e)
@@ -40,13 +56,7 @@ namespace DeliverEat
 
             dtpFechaHoraRecepcion.MinDate = fechaActual;
             dtpFechaHoraRecepcion.MaxDate = fechaHasta;
-
-        }
-
-
-        private void ClearAll()
-        {
-
+            dtpFechaVencimiento.MinDate = fechaActual;
 
         }
 
@@ -77,9 +87,14 @@ namespace DeliverEat
             string mensaje = "";
             // Validar que calle y numero sea alfanumerico
             Regex regex = new Regex("^[0-9\\p{L} ]+$");
-            if (!regex.IsMatch(txtCalle.Text))
+
+            if (txtCalle.Text == "")
             {
-                mensaje += "El campo calle y número debe contener solo caracteres alfanumericos.";
+                mensaje += "Debe cargar el nombre y numero de la calle";
+            }
+            else if (!regex.IsMatch(txtCalle.Text))
+            {
+                mensaje += "\nEl campo calle y número debe contener solo caracteres alfanumericos.";
             }
 
             // Validar horario de fecha hora recepcion
@@ -91,34 +106,66 @@ namespace DeliverEat
                 }
                 if (dtpFechaHoraRecepcion.Value < DateTime.Now)
                 {
-                    mensaje += "\nNo se puede planificar un pedido para una hora menor a la actual";
+                    mensaje += "\nNo se puede planificar un pedido para una hora menor a la actual.";
                 }
             }
-
-            string numeroTarjeta = txtNumeroTarjeta.Text.Replace(" ", "");
 
             // Validar tarjeta visa
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpTarjeta"])
             {
+                string numeroTarjeta = txtNumeroTarjeta.Text.Replace(" ", "");
                 //if (!numeroTarjeta.Contains(" "))
                 if (numeroTarjeta.Length == 19)
                 {
                     if (!ValidarTarjeta(numeroTarjeta))
                     {
-                        mensaje += "\nLa tarjeta ingresada no es valida";
+                        mensaje += "\nLa tarjeta ingresada no es valida.";
                     }
                 }
                 else
                 {
-                    mensaje += "\nDebe cargar todos los numeros de la Tarjeta";
+                    mensaje += "\nDebe cargar todos los numeros de la Tarjeta.";
                 }
 
+                // validar campo cvc
+                string textoCvc = txtCvc.Text.Trim().Replace(" ", "");
+
+                if (textoCvc == "")
+                {
+                    mensaje += "\nDebe cargar el codigo CVC";
+                }
+                else if (textoCvc.Length != 3)
+                {
+                    mensaje += "\nEl codigo CVC debe tener 3 digitos";
+                }
+
+                // validar nombre en la tarjeta
+                if (txtNombreTitular.Text == "")
+                {
+                    mensaje += "\nDebe cargar el nombre del titular";
+                }
             }
 
-
             // Validar monto en efectivo a abonar mayor al monto del pedido
+            if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
+            {
+                string texto = txtMontoAPagar.Text.Trim();
+                if (txtMontoAPagar.Text != "$   .   ,")
+                {
+                    double monto = ConvertirMonto();
 
+                    if (monto < this.CalcularTotal())
+                    {
+                        mensaje += "\nLa cantidad abonada en efectivo debe ser mayor al precio total\ndel carrito.";
+                    }
+                }
+                else
+                {
+                    mensaje += "\nDebe cargar el monto con el que va a abonar";
+                }
 
+                
+            }
 
             if (mensaje != "")
             {
@@ -127,15 +174,40 @@ namespace DeliverEat
             }
             else
             {
-                MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Tu pedido ha sido confirmado!", 2000);
-                SnackBarMessage.Show(this);
                 GuardarDatos();
+                gestorPedido.RegistrarPedido();               
             }
 
+        }
 
+        // convertir el maskedtextbox a double
+        private double ConvertirMonto()
+        {
+            string texto = txtMontoAPagar.Text;
+            string cadenaFormateada = "";
 
+            for (int i = 0; i < texto.Length; i++)
+            {
+                if (this.IsDigit(texto[i].ToString()))
+                    cadenaFormateada += texto[i].ToString();
+                else if (texto[i] == ',')
+                    cadenaFormateada += ",";
+                else if (texto[i] == ' ')
+                    continue;
+            }
 
+            double monto = Double.Parse(cadenaFormateada);
+            return monto;
+        }
 
+        private bool IsDigit(string input)
+        {
+            // Define la expresión regular para verificar si la cadena contiene solo dígitos.
+            Regex regex = new Regex(@"^\d+$");
+
+            // Usa el método Match para verificar si la cadena coincide con la expresión regular.
+            // Si coincide, significa que la cadena contiene solo dígitos.
+            return regex.IsMatch(input);
         }
 
         private bool ValidarTarjeta(string numero)
@@ -202,7 +274,7 @@ namespace DeliverEat
             if (tclMetodoPago.SelectedTab == tclMetodoPago.TabPages["tpEfectivo"])
             {
                 Efectivo efectivo = new Efectivo();
-                efectivo.MontoQueAbona = Convert.ToDouble(txtMontoAPagar.Text);
+                efectivo.MontoQueAbona = ConvertirMonto();
                 pedido.MetodoPago = efectivo;
             }
             else
@@ -210,7 +282,7 @@ namespace DeliverEat
 
                 TarjetaCredito tarjeta = new TarjetaCredito();
                 tarjeta.numero = txtNumeroTarjeta.Text;
-                tarjeta.cvc = txtCvc.Text;
+                tarjeta.cvc = txtCvc.Text.Trim();
                 tarjeta.fechaVencimiento = dtpFechaVencimiento.Value;
                 tarjeta.nombreApellidoTitular = txtNombreTitular.Text;
                 pedido.MetodoPago = tarjeta;
@@ -227,6 +299,22 @@ namespace DeliverEat
             gestorPedido.GuardarPedido(pedido);
 
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            MaterialDialog materialDialog = new MaterialDialog(this, "Cancelar pedido", "¿Está seguro de que quiere cancelar el pedido?", "OK", true, "Cancel");
+            DialogResult result = materialDialog.ShowDialog(this);
+
+            if (result.ToString() == "OK")
+            {
+                this.gestorPedido.CancelarPedido();
+            }
+        }
+
+        private void FrmRealizarPedido_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // acasa pete
         }
     }
 }

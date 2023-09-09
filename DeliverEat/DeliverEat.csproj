@@ -67,6 +67,12 @@
     <Compile Include="Entidades\Pedido.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\TarjetaCredito.cs" />
+    <Compile Include="InterfacesDeUsuario\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfacesDeUsuario\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfacesDeUsuario\FrmRealizarPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="Repositorios\PedidoRepositorio.cs" />
     <Compile Include="Repositorios\Persistencia.cs" />
     <Compile Include="Servicios\GestorPedido.cs" />
+    <EmbeddedResource Include="InterfacesDeUsuario\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfacesDeUsuario\FrmRealizarPedido.resx">
       <DependentUpon>FrmRealizarPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,12 +114,29 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\shoppingcart.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\calendarDark.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\calendarWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoppingcart64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoppingcart24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

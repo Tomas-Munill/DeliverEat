@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dtpFechaHoraRecepcion = new System.Windows.Forms.DateTimePicker();
+            this.lblPrecioTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.lblPagar = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tclMetodoPago = new MaterialSkin.Controls.MaterialTabControl();
             this.tpTarjeta = new System.Windows.Forms.TabPage();
@@ -53,6 +57,7 @@
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tclMetodoPago.SuspendLayout();
             this.tpTarjeta.SuspendLayout();
             this.tpEfectivo.SuspendLayout();
@@ -62,7 +67,9 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
-            this.panel1.Controls.Add(this.dtpFechaHoraRecepcion);
+            this.panel1.Controls.Add(this.lblPrecioTotal);
+            this.panel1.Controls.Add(this.lblPagar);
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.materialTabSelector1);
             this.panel1.Controls.Add(this.tclMetodoPago);
             this.panel1.Controls.Add(this.rdbFechaHoraRecepcion);
@@ -76,23 +83,79 @@
             this.panel1.Controls.Add(this.btnConfirmar);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.materialLabel2);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(137)))), ((int)(((byte)(184)))));
             this.panel1.Location = new System.Drawing.Point(3, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 721);
+            this.panel1.Size = new System.Drawing.Size(442, 721);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dtpFechaHoraRecepcion);
+            this.panel2.Location = new System.Drawing.Point(62, 656);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(313, 54);
+            this.panel2.TabIndex = 61;
             // 
             // dtpFechaHoraRecepcion
             // 
+            this.dtpFechaHoraRecepcion.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaHoraRecepcion.CustomFormat = "dd/MM HH:mm";
-            this.dtpFechaHoraRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaHoraRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaHoraRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(20, 612);
+            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(47, 18);
             this.dtpFechaHoraRecepcion.Name = "dtpFechaHoraRecepcion";
-            this.dtpFechaHoraRecepcion.Size = new System.Drawing.Size(205, 29);
-            this.dtpFechaHoraRecepcion.TabIndex = 55;
+            this.dtpFechaHoraRecepcion.Size = new System.Drawing.Size(205, 20);
+            this.dtpFechaHoraRecepcion.TabIndex = 60;
             this.dtpFechaHoraRecepcion.Visible = false;
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.AutoSize = true;
+            this.lblPrecioTotal.Depth = 0;
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(329, 260);
+            this.lblPrecioTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.Size = new System.Drawing.Size(46, 19);
+            this.lblPrecioTotal.TabIndex = 59;
+            this.lblPrecioTotal.Text = "$$$$$";
+            this.lblPrecioTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblPagar
+            // 
+            this.lblPagar.AutoSize = true;
+            this.lblPagar.Depth = 0;
+            this.lblPagar.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPagar.Location = new System.Drawing.Point(17, 261);
+            this.lblPagar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPagar.Name = "lblPagar";
+            this.lblPagar.Size = new System.Drawing.Size(297, 19);
+            this.lblPagar.TabIndex = 57;
+            this.lblPagar.Text = "Total a Pagar .................................................";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.AutoSize = false;
+            this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCancelar.Depth = 0;
+            this.btnCancelar.HighEmphasis = false;
+            this.btnCancelar.Icon = null;
+            this.btnCancelar.Location = new System.Drawing.Point(93, 767);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCancelar.Size = new System.Drawing.Size(250, 36);
+            this.btnCancelar.TabIndex = 56;
+            this.btnCancelar.Text = "cancelar";
+            this.btnCancelar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCancelar.UseAccentColor = false;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // materialTabSelector1
             // 
@@ -100,7 +163,7 @@
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTabSelector1.Location = new System.Drawing.Point(16, 268);
+            this.materialTabSelector1.Location = new System.Drawing.Point(16, 309);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(396, 48);
@@ -112,7 +175,7 @@
             this.tclMetodoPago.Controls.Add(this.tpTarjeta);
             this.tclMetodoPago.Controls.Add(this.tpEfectivo);
             this.tclMetodoPago.Depth = 0;
-            this.tclMetodoPago.Location = new System.Drawing.Point(16, 322);
+            this.tclMetodoPago.Location = new System.Drawing.Point(16, 363);
             this.tclMetodoPago.MouseState = MaterialSkin.MouseState.HOVER;
             this.tclMetodoPago.Multiline = true;
             this.tclMetodoPago.Name = "tclMetodoPago";
@@ -243,7 +306,7 @@
             this.txtNombreTitular.Hint = "Nombre Apellido del Titular";
             this.txtNombreTitular.LeadingIcon = null;
             this.txtNombreTitular.Location = new System.Drawing.Point(14, 64);
-            this.txtNombreTitular.MaxLength = 50;
+            this.txtNombreTitular.MaxLength = 19;
             this.txtNombreTitular.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombreTitular.Multiline = false;
             this.txtNombreTitular.Name = "txtNombreTitular";
@@ -293,7 +356,7 @@
             this.txtMontoAPagar.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
             this.txtMontoAPagar.LeadingIcon = null;
             this.txtMontoAPagar.Location = new System.Drawing.Point(20, 61);
-            this.txtMontoAPagar.Mask = "00,000.00";
+            this.txtMontoAPagar.Mask = "$ 00,000.00";
             this.txtMontoAPagar.MaxLength = 32767;
             this.txtMontoAPagar.MouseState = MaterialSkin.MouseState.OUT;
             this.txtMontoAPagar.Name = "txtMontoAPagar";
@@ -313,7 +376,7 @@
             this.txtMontoAPagar.SkipLiterals = true;
             this.txtMontoAPagar.TabIndex = 50;
             this.txtMontoAPagar.TabStop = false;
-            this.txtMontoAPagar.Text = "  .   ,";
+            this.txtMontoAPagar.Text = "$   .   ,";
             this.txtMontoAPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtMontoAPagar.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
             this.txtMontoAPagar.TrailingIcon = null;
@@ -324,7 +387,7 @@
             // 
             this.rdbFechaHoraRecepcion.AutoSize = true;
             this.rdbFechaHoraRecepcion.Depth = 0;
-            this.rdbFechaHoraRecepcion.Location = new System.Drawing.Point(14, 572);
+            this.rdbFechaHoraRecepcion.Location = new System.Drawing.Point(8, 604);
             this.rdbFechaHoraRecepcion.Margin = new System.Windows.Forms.Padding(0);
             this.rdbFechaHoraRecepcion.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rdbFechaHoraRecepcion.MouseState = MaterialSkin.MouseState.HOVER;
@@ -342,7 +405,7 @@
             this.rdbLoAntesPosible.AutoSize = true;
             this.rdbLoAntesPosible.Checked = true;
             this.rdbLoAntesPosible.Depth = 0;
-            this.rdbLoAntesPosible.Location = new System.Drawing.Point(14, 535);
+            this.rdbLoAntesPosible.Location = new System.Drawing.Point(8, 567);
             this.rdbLoAntesPosible.Margin = new System.Windows.Forms.Padding(0);
             this.rdbLoAntesPosible.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rdbLoAntesPosible.MouseState = MaterialSkin.MouseState.HOVER;
@@ -360,7 +423,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel1.Location = new System.Drawing.Point(10, 232);
+            this.materialLabel1.Location = new System.Drawing.Point(10, 227);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(216, 24);
@@ -373,7 +436,7 @@
             this.lblCompletaDireccion.Depth = 0;
             this.lblCompletaDireccion.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblCompletaDireccion.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.lblCompletaDireccion.Location = new System.Drawing.Point(10, 12);
+            this.lblCompletaDireccion.Location = new System.Drawing.Point(10, 7);
             this.lblCompletaDireccion.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCompletaDireccion.Name = "lblCompletaDireccion";
             this.lblCompletaDireccion.Size = new System.Drawing.Size(196, 24);
@@ -385,7 +448,7 @@
             this.lblCantidadCaracteres.AutoSize = true;
             this.lblCantidadCaracteres.Depth = 0;
             this.lblCantidadCaracteres.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCantidadCaracteres.Location = new System.Drawing.Point(368, 210);
+            this.lblCantidadCaracteres.Location = new System.Drawing.Point(368, 205);
             this.lblCantidadCaracteres.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCantidadCaracteres.Name = "lblCantidadCaracteres";
             this.lblCantidadCaracteres.Size = new System.Drawing.Size(44, 19);
@@ -400,7 +463,7 @@
             this.txtReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtReferencia.Hint = "Referencia (opcional)";
             this.txtReferencia.LeadingIcon = null;
-            this.txtReferencia.Location = new System.Drawing.Point(14, 157);
+            this.txtReferencia.Location = new System.Drawing.Point(14, 152);
             this.txtReferencia.MaxLength = 240;
             this.txtReferencia.MouseState = MaterialSkin.MouseState.OUT;
             this.txtReferencia.Multiline = false;
@@ -429,7 +492,7 @@
             this.cmbCiudades.Items.AddRange(new object[] {
             "Carlos Paz",
             "Córdoba"});
-            this.cmbCiudades.Location = new System.Drawing.Point(14, 102);
+            this.cmbCiudades.Location = new System.Drawing.Point(14, 97);
             this.cmbCiudades.MaxDropDownItems = 4;
             this.cmbCiudades.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbCiudades.Name = "cmbCiudades";
@@ -452,7 +515,7 @@
             this.txtCalle.Hint = "Calle y número";
             this.txtCalle.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
             this.txtCalle.LeadingIcon = null;
-            this.txtCalle.Location = new System.Drawing.Point(14, 48);
+            this.txtCalle.Location = new System.Drawing.Point(14, 43);
             this.txtCalle.Mask = "";
             this.txtCalle.MaxLength = 32767;
             this.txtCalle.MouseState = MaterialSkin.MouseState.OUT;
@@ -481,17 +544,18 @@
             // 
             // btnConfirmar
             // 
+            this.btnConfirmar.AutoSize = false;
             this.btnConfirmar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnConfirmar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnConfirmar.Depth = 0;
             this.btnConfirmar.HighEmphasis = true;
             this.btnConfirmar.Icon = null;
-            this.btnConfirmar.Location = new System.Drawing.Point(472, 572);
+            this.btnConfirmar.Location = new System.Drawing.Point(93, 719);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnConfirmar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnConfirmar.Size = new System.Drawing.Size(105, 36);
+            this.btnConfirmar.Size = new System.Drawing.Size(250, 36);
             this.btnConfirmar.TabIndex = 39;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -501,12 +565,10 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 740);
+            this.label1.Location = new System.Drawing.Point(90, 809);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(269, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
             // 
             // materialLabel2
             // 
@@ -514,7 +576,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.materialLabel2.Location = new System.Drawing.Point(16, 511);
+            this.materialLabel2.Location = new System.Drawing.Point(10, 543);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(232, 24);
@@ -541,13 +603,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 788);
+            this.ClientSize = new System.Drawing.Size(448, 788);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(448, 788);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(448, 788);
             this.Name = "FrmRealizarPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeliverEat - Realizar Pedido ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRealizarPedido_FormClosing);
             this.Load += new System.EventHandler(this.FrmRealizarPedido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.tclMetodoPago.ResumeLayout(false);
             this.tpTarjeta.ResumeLayout(false);
             this.tpTarjeta.PerformLayout();
@@ -578,11 +647,15 @@
         private MaterialSkin.Controls.MaterialTabControl tclMetodoPago;
         private System.Windows.Forms.TabPage tpTarjeta;
         private System.Windows.Forms.TabPage tpEfectivo;
-        private System.Windows.Forms.DateTimePicker dtpFechaHoraRecepcion;
         private ControlesPersonalizados.RJDatePicker dtpFechaVencimiento;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtCvc;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtNumeroTarjeta;
+        private MaterialSkin.Controls.MaterialButton btnCancelar;
+        private MaterialSkin.Controls.MaterialLabel lblPagar;
+        private MaterialSkin.Controls.MaterialLabel lblPrecioTotal;
+        private System.Windows.Forms.DateTimePicker dtpFechaHoraRecepcion;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
