@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRealizarPedido));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dtpFechaHoraRecepcion = new System.Windows.Forms.DateTimePicker();
             this.lblPrecioTotal = new MaterialSkin.Controls.MaterialLabel();
             this.lblPagar = new MaterialSkin.Controls.MaterialLabel();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
@@ -40,6 +39,7 @@
             this.txtNumeroTarjeta = new MaterialSkin.Controls.MaterialMaskedTextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txtCvc = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
             this.txtNombreTitular = new MaterialSkin.Controls.MaterialTextBox();
             this.tpEfectivo = new System.Windows.Forms.TabPage();
             this.lblConCuantoVasAPagar = new MaterialSkin.Controls.MaterialLabel();
@@ -55,12 +55,13 @@
             this.btnConfirmar = new MaterialSkin.Controls.MaterialButton();
             this.label1 = new System.Windows.Forms.Label();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.dtpFechaVencimiento = new DeliverEat.ControlesPersonalizados.RJDatePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpFechaHoraRecepcion = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tclMetodoPago.SuspendLayout();
             this.tpTarjeta.SuspendLayout();
             this.tpEfectivo.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,26 +91,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(442, 721);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dtpFechaHoraRecepcion);
-            this.panel2.Location = new System.Drawing.Point(62, 656);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(313, 54);
-            this.panel2.TabIndex = 61;
-            // 
-            // dtpFechaHoraRecepcion
-            // 
-            this.dtpFechaHoraRecepcion.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaHoraRecepcion.CustomFormat = "dd/MM HH:mm";
-            this.dtpFechaHoraRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaHoraRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(47, 18);
-            this.dtpFechaHoraRecepcion.Name = "dtpFechaHoraRecepcion";
-            this.dtpFechaHoraRecepcion.Size = new System.Drawing.Size(205, 20);
-            this.dtpFechaHoraRecepcion.TabIndex = 60;
-            this.dtpFechaHoraRecepcion.Visible = false;
             // 
             // lblPrecioTotal
             // 
@@ -162,7 +143,7 @@
             this.materialTabSelector1.BaseTabControl = this.tclMetodoPago;
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector1.Location = new System.Drawing.Point(16, 309);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
@@ -297,12 +278,27 @@
             this.txtCvc.UseSystemPasswordChar = false;
             this.txtCvc.ValidatingType = null;
             // 
+            // dtpFechaVencimiento
+            // 
+            this.dtpFechaVencimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.dtpFechaVencimiento.BorderSize = 1;
+            this.dtpFechaVencimiento.CustomFormat = "MM/yyyy";
+            this.dtpFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(271, 79);
+            this.dtpFechaVencimiento.MinimumSize = new System.Drawing.Size(4, 35);
+            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(115, 35);
+            this.dtpFechaVencimiento.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.dtpFechaVencimiento.TabIndex = 5;
+            this.dtpFechaVencimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            // 
             // txtNombreTitular
             // 
             this.txtNombreTitular.AnimateReadOnly = false;
             this.txtNombreTitular.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreTitular.Depth = 0;
-            this.txtNombreTitular.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombreTitular.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNombreTitular.Hint = "Nombre Apellido del Titular";
             this.txtNombreTitular.LeadingIcon = null;
             this.txtNombreTitular.Location = new System.Drawing.Point(14, 64);
@@ -460,7 +456,7 @@
             this.txtReferencia.AnimateReadOnly = false;
             this.txtReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReferencia.Depth = 0;
-            this.txtReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtReferencia.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtReferencia.Hint = "Referencia (opcional)";
             this.txtReferencia.LeadingIcon = null;
             this.txtReferencia.Location = new System.Drawing.Point(14, 152);
@@ -583,20 +579,25 @@
             this.materialLabel2.TabIndex = 49;
             this.materialLabel2.Text = "¿Cuando queres recibirlo?";
             // 
-            // dtpFechaVencimiento
+            // panel2
             // 
-            this.dtpFechaVencimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.dtpFechaVencimiento.BorderSize = 1;
-            this.dtpFechaVencimiento.CustomFormat = "MM/yyyy";
-            this.dtpFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(271, 79);
-            this.dtpFechaVencimiento.MinimumSize = new System.Drawing.Size(4, 35);
-            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
-            this.dtpFechaVencimiento.Size = new System.Drawing.Size(115, 35);
-            this.dtpFechaVencimiento.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.dtpFechaVencimiento.TabIndex = 5;
-            this.dtpFechaVencimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            this.panel2.Controls.Add(this.dtpFechaHoraRecepcion);
+            this.panel2.Location = new System.Drawing.Point(62, 656);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(313, 54);
+            this.panel2.TabIndex = 61;
+            // 
+            // dtpFechaHoraRecepcion
+            // 
+            this.dtpFechaHoraRecepcion.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaHoraRecepcion.CustomFormat = "dd/MM HH:mm";
+            this.dtpFechaHoraRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaHoraRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHoraRecepcion.Location = new System.Drawing.Point(47, 18);
+            this.dtpFechaHoraRecepcion.Name = "dtpFechaHoraRecepcion";
+            this.dtpFechaHoraRecepcion.Size = new System.Drawing.Size(205, 20);
+            this.dtpFechaHoraRecepcion.TabIndex = 60;
+            this.dtpFechaHoraRecepcion.Visible = false;
             // 
             // FrmRealizarPedido
             // 
@@ -605,6 +606,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(448, 788);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(448, 788);
             this.MinimizeBox = false;
@@ -616,12 +618,12 @@
             this.Load += new System.EventHandler(this.FrmRealizarPedido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.tclMetodoPago.ResumeLayout(false);
             this.tpTarjeta.ResumeLayout(false);
             this.tpTarjeta.PerformLayout();
             this.tpEfectivo.ResumeLayout(false);
             this.tpEfectivo.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
