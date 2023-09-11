@@ -43,14 +43,14 @@
             this.subtotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLimpiarCarrito = new MaterialSkin.Controls.MaterialButton();
             this.btnConfirmar = new MaterialSkin.Controls.MaterialButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tpPedidos = new System.Windows.Forms.TabPage();
+            this.lblPedidos = new MaterialSkin.Controls.MaterialLabel();
             this.lstPedidos = new MaterialSkin.Controls.MaterialListView();
             this.direccion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metodoPago = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.monto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fechaRecepcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblPedidos = new MaterialSkin.Controls.MaterialLabel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tpCarrito.SuspendLayout();
             this.tpPedidos.SuspendLayout();
@@ -234,14 +234,6 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "home24.png");
-            this.imageList1.Images.SetKeyName(1, "shoppingcart24.png");
-            this.imageList1.Images.SetKeyName(2, "pedidos.png");
-            // 
             // tpPedidos
             // 
             this.tpPedidos.Controls.Add(this.lblPedidos);
@@ -254,6 +246,19 @@
             this.tpPedidos.TabIndex = 2;
             this.tpPedidos.Text = "Pedidos";
             this.tpPedidos.UseVisualStyleBackColor = true;
+            // 
+            // lblPedidos
+            // 
+            this.lblPedidos.AutoSize = true;
+            this.lblPedidos.Depth = 0;
+            this.lblPedidos.Font = new System.Drawing.Font("Roboto", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPedidos.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
+            this.lblPedidos.Location = new System.Drawing.Point(11, 16);
+            this.lblPedidos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPedidos.Name = "lblPedidos";
+            this.lblPedidos.Size = new System.Drawing.Size(185, 41);
+            this.lblPedidos.TabIndex = 1;
+            this.lblPedidos.Text = "Mis pedidos";
             // 
             // lstPedidos
             // 
@@ -282,7 +287,7 @@
             // direccion
             // 
             this.direccion.Text = "Direccion";
-            this.direccion.Width = 120;
+            this.direccion.Width = 200;
             // 
             // metodoPago
             // 
@@ -292,24 +297,20 @@
             // monto
             // 
             this.monto.Text = "Monto";
+            this.monto.Width = 120;
             // 
             // fechaRecepcion
             // 
             this.fechaRecepcion.Text = "Recepcion";
-            this.fechaRecepcion.Width = 120;
+            this.fechaRecepcion.Width = 140;
             // 
-            // lblPedidos
+            // imageList1
             // 
-            this.lblPedidos.AutoSize = true;
-            this.lblPedidos.Depth = 0;
-            this.lblPedidos.Font = new System.Drawing.Font("Roboto", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPedidos.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
-            this.lblPedidos.Location = new System.Drawing.Point(11, 16);
-            this.lblPedidos.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblPedidos.Name = "lblPedidos";
-            this.lblPedidos.Size = new System.Drawing.Size(185, 41);
-            this.lblPedidos.TabIndex = 1;
-            this.lblPedidos.Text = "Mis pedidos";
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "home24.png");
+            this.imageList1.Images.SetKeyName(1, "shoppingcart24.png");
+            this.imageList1.Images.SetKeyName(2, "pedidos.png");
             // 
             // FrmPrincipal
             // 
