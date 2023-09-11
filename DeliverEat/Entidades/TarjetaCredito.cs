@@ -46,7 +46,8 @@ namespace DeliverEat.Entidades
             return sum % 10 == 0;
         }
 
-        public string ToString()
+
+        override public string ToString()
         {
             return "Tarjeta";
         }

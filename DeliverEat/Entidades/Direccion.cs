@@ -12,7 +12,7 @@ namespace DeliverEat.Entidades
         public Ciudad ciudad { get; set; }
         public string Referencia { get; set; }
 
-        public string ToString()
+        override public string ToString()
         {
             return this.Calle + ", " + ciudad.Nombre;
         }

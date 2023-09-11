@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tpInicio = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tpCarrito = new System.Windows.Forms.TabPage();
             this.lblPrecioTotal = new MaterialSkin.Controls.MaterialLabel();
             this.lblPagar = new MaterialSkin.Controls.MaterialLabel();
@@ -52,6 +53,8 @@
             this.fechaRecepcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialTabControl1.SuspendLayout();
+            this.tpInicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tpCarrito.SuspendLayout();
             this.tpPedidos.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +77,8 @@
             // 
             // tpInicio
             // 
-            this.tpInicio.BackColor = System.Drawing.Color.White;
+            this.tpInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
+            this.tpInicio.Controls.Add(this.pictureBox1);
             this.tpInicio.ImageKey = "home24.png";
             this.tpInicio.Location = new System.Drawing.Point(4, 31);
             this.tpInicio.Name = "tpInicio";
@@ -83,9 +87,18 @@
             this.tpInicio.TabIndex = 0;
             this.tpInicio.Text = "Inicio";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DeliverEat.Properties.Resources.logodelievereat;
+            this.pictureBox1.Location = new System.Drawing.Point(55, 196);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(254, 260);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // tpCarrito
             // 
-            this.tpCarrito.BackColor = System.Drawing.Color.White;
+            this.tpCarrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
             this.tpCarrito.Controls.Add(this.lblPrecioTotal);
             this.tpCarrito.Controls.Add(this.lblPagar);
             this.tpCarrito.Controls.Add(this.btnCargarCarrito);
@@ -236,6 +249,7 @@
             // 
             // tpPedidos
             // 
+            this.tpPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(239)))));
             this.tpPedidos.Controls.Add(this.lblPedidos);
             this.tpPedidos.Controls.Add(this.lstPedidos);
             this.tpPedidos.ImageKey = "pedidos.png";
@@ -245,7 +259,6 @@
             this.tpPedidos.Size = new System.Drawing.Size(434, 686);
             this.tpPedidos.TabIndex = 2;
             this.tpPedidos.Text = "Pedidos";
-            this.tpPedidos.UseVisualStyleBackColor = true;
             // 
             // lblPedidos
             // 
@@ -271,6 +284,7 @@
             this.monto,
             this.fechaRecepcion});
             this.lstPedidos.Depth = 0;
+            this.lstPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstPedidos.FullRowSelect = true;
             this.lstPedidos.HideSelection = false;
             this.lstPedidos.Location = new System.Drawing.Point(18, 76);
@@ -292,12 +306,12 @@
             // metodoPago
             // 
             this.metodoPago.Text = "Metodo de Pago";
-            this.metodoPago.Width = 100;
+            this.metodoPago.Width = 140;
             // 
             // monto
             // 
             this.monto.Text = "Monto";
-            this.monto.Width = 120;
+            this.monto.Width = 100;
             // 
             // fechaRecepcion
             // 
@@ -327,6 +341,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeliverEat";
             this.materialTabControl1.ResumeLayout(false);
+            this.tpInicio.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tpCarrito.ResumeLayout(false);
             this.tpCarrito.PerformLayout();
             this.tpPedidos.ResumeLayout(false);
@@ -358,5 +374,6 @@
         private System.Windows.Forms.ColumnHeader metodoPago;
         private System.Windows.Forms.ColumnHeader monto;
         private System.Windows.Forms.ColumnHeader fechaRecepcion;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

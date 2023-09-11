@@ -87,6 +87,7 @@ namespace DeliverEat
             string mensaje = "";
             // Validar que calle y numero sea alfanumerico
             Regex regex = new Regex("^[0-9\\p{L} ]+$");
+            Regex regexTitular = new Regex("^[\\p{L} ]+$");
 
             if (txtCalle.Text == "")
             {
@@ -143,6 +144,10 @@ namespace DeliverEat
                 if (txtNombreTitular.Text == "")
                 {
                     mensaje += "\nDebe cargar el nombre del titular";
+                }
+                else if (!regexTitular.IsMatch(txtNombreTitular.Text))
+                {
+                    mensaje += "\nEl nombre del titular debe contener solo letras"; 
                 }
             }
 
@@ -322,7 +327,7 @@ namespace DeliverEat
 
         private void FrmRealizarPedido_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // acasa pete
+            this.gestorPedido.CancelarPedido();
         }
     }
 }

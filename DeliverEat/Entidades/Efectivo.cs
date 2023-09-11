@@ -15,7 +15,7 @@ namespace DeliverEat.Entidades
             return MontoQueAbona >= montoDouble;
         }
 
-        public string ToString()
+        override public string ToString()
         {
             return "Efectivo";
         }
