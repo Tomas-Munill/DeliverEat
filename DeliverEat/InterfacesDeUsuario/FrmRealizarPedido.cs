@@ -296,7 +296,15 @@ namespace DeliverEat
             pedido.Direccion = direccion;
             pedido.DetallePedidos = listaDetalles;
 
-            gestorPedido.GuardarPedido(pedido);
+            try
+            {
+                gestorPedido.GuardarPedido(pedido);
+            }
+            catch (Exception ex) 
+            {
+                gestorPedido.CrearInstanciaRepositorio();
+            }
+            
 
 
         }

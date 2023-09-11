@@ -10,12 +10,21 @@ namespace DeliverEat.Entidades
     {
         public int Id { get; set; }
         public bool RecepcionLoAntesPosible { get; set; } 
-        public DateTime? FechaHoraRecepcion { get; set; }
+        public DateTime FechaHoraRecepcion { get; set; }
         public DateTime FechaHoraCreacion { get; set; }
         public string Estado { get; set; }
         public Direccion Direccion { get; set; }
         public List<DetallePedido> DetallePedidos { get; set;  }
         public IMetodoPago MetodoPago { get; set; }
 
+        public double CalcularTotal()
+        {
+            double total = 0;
+            foreach(var d in DetallePedidos)
+            {
+                total += d.CalcularPrecio();
+            }
+            return total;
+        }
     }
 }

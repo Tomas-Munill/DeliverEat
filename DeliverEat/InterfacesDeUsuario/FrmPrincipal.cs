@@ -1,4 +1,5 @@
 ﻿using DeliverEat.Entidades;
+using DeliverEat.Repositorios;
 using DeliverEat.Servicios;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -29,6 +30,7 @@ namespace DeliverEat.InterfacesDeUsuario
 
             this.gestorPedido = gestor;
             CargarCarrito();
+            CargarListadoPedidos();
 
             lblPrecioTotal.Text = CalcularTotal().ToString("c2");
         }
@@ -55,6 +57,29 @@ namespace DeliverEat.InterfacesDeUsuario
             return cantidad;
 
         }
+
+        public void CargarListadoPedidos()
+        {
+            Pedido[] pedidos = gestorPedido.GetPedidos();
+            lstPedidos.Items.Clear();
+            foreach (var pedido in pedidos)
+            {
+                string fechaRecepcion;
+                if (pedido.RecepcionLoAntesPosible)
+                {
+                    fechaRecepcion = "Lo antes posible";
+                }
+                else
+                {
+                    fechaRecepcion = pedido.FechaHoraRecepcion.ToString("dd/MM HH:mm");
+                }
+
+                var item = new ListViewItem(new string[] {pedido.Direccion.ToString(), pedido.MetodoPago.ToString(),
+                pedido.CalcularTotal().ToString("c2"), fechaRecepcion});
+                lstPedidos.Items.Add(item);
+            }
+        }
+
 
         private void CargarCarrito()
         {

@@ -14,5 +14,10 @@ namespace DeliverEat.Entidades
             double montoDouble = Convert.ToDouble(monto);
             return MontoQueAbona >= montoDouble;
         }
+
+        public string ToString()
+        {
+            return "Efectivo";
+        }
     }
 }

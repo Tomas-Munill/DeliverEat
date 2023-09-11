@@ -33,7 +33,7 @@ namespace DeliverEat.Servicios
             this.carrito.Add(detalleHamburguesa);
 
             // crear archivo repositorio
-            pedidoRepositorio = new PedidoRepositorio();
+            CrearInstanciaRepositorio();
 
             // ejecutar form
             frmPrincipal = new FrmPrincipal(this);
@@ -44,6 +44,14 @@ namespace DeliverEat.Servicios
 
 
         }
+        public Pedido[] GetPedidos()
+        {
+            return pedidoRepositorio.GetPedidos();
+        }
+        public void CrearInstanciaRepositorio()
+        {
+            pedidoRepositorio = new PedidoRepositorio();
+        }
 
         public List<DetallePedido> CargarCarrito()
         {
@@ -53,6 +61,7 @@ namespace DeliverEat.Servicios
         public void GuardarPedido(Pedido pedido)
         {
             pedidoRepositorio.InsertarPedido(pedido);
+            frmPrincipal.CargarListadoPedidos();
         }
 
         public void CancelarPedido()

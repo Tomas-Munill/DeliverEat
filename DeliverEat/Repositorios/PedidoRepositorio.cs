@@ -27,7 +27,7 @@ namespace DeliverEat.Repositorios
             pedidos.Commit();
         }
 
-        public Pedido[] GetPedido()
+        public Pedido[] GetPedidos()
         {
             return pedidos.SelectAll().ToArray();
         }

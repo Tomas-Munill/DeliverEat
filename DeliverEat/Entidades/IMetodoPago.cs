@@ -9,5 +9,6 @@ namespace DeliverEat.Entidades
     public interface IMetodoPago
     {
         bool ValidarMetodo(string NumeroT);
+        string ToString();
     }
 }

@@ -45,5 +45,10 @@ namespace DeliverEat.Entidades
             // El número es válido si la suma es un múltiplo de 10
             return sum % 10 == 0;
         }
+
+        public string ToString()
+        {
+            return "Tarjeta";
+        }
     }
 }

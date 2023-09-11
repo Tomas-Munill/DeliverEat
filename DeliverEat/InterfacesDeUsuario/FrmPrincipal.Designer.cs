@@ -33,6 +33,8 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tpInicio = new System.Windows.Forms.TabPage();
             this.tpCarrito = new System.Windows.Forms.TabPage();
+            this.lblPrecioTotal = new MaterialSkin.Controls.MaterialLabel();
+            this.lblPagar = new MaterialSkin.Controls.MaterialLabel();
             this.btnCargarCarrito = new MaterialSkin.Controls.MaterialButton();
             this.lstCarrito = new MaterialSkin.Controls.MaterialListView();
             this.producto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,16 +44,23 @@
             this.btnLimpiarCarrito = new MaterialSkin.Controls.MaterialButton();
             this.btnConfirmar = new MaterialSkin.Controls.MaterialButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.lblPrecioTotal = new MaterialSkin.Controls.MaterialLabel();
-            this.lblPagar = new MaterialSkin.Controls.MaterialLabel();
+            this.tpPedidos = new System.Windows.Forms.TabPage();
+            this.lstPedidos = new MaterialSkin.Controls.MaterialListView();
+            this.direccion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metodoPago = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.monto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fechaRecepcion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblPedidos = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
             this.tpCarrito.SuspendLayout();
+            this.tpPedidos.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
             // 
             this.materialTabControl1.Controls.Add(this.tpInicio);
             this.materialTabControl1.Controls.Add(this.tpCarrito);
+            this.materialTabControl1.Controls.Add(this.tpPedidos);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl1.ImageList = this.imageList1;
@@ -90,6 +99,31 @@
             this.tpCarrito.Size = new System.Drawing.Size(434, 686);
             this.tpCarrito.TabIndex = 1;
             this.tpCarrito.Text = "Carrito";
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.AutoSize = true;
+            this.lblPrecioTotal.Depth = 0;
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(299, 500);
+            this.lblPrecioTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.Size = new System.Drawing.Size(46, 19);
+            this.lblPrecioTotal.TabIndex = 64;
+            this.lblPrecioTotal.Text = "$$$$$";
+            this.lblPrecioTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblPagar
+            // 
+            this.lblPagar.AutoSize = true;
+            this.lblPagar.Depth = 0;
+            this.lblPagar.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPagar.Location = new System.Drawing.Point(16, 501);
+            this.lblPagar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPagar.Name = "lblPagar";
+            this.lblPagar.Size = new System.Drawing.Size(297, 19);
+            this.lblPagar.TabIndex = 63;
+            this.lblPagar.Text = "Total a Pagar .................................................";
             // 
             // btnCargarCarrito
             // 
@@ -206,31 +240,76 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "home24.png");
             this.imageList1.Images.SetKeyName(1, "shoppingcart24.png");
+            this.imageList1.Images.SetKeyName(2, "pedidos.png");
             // 
-            // lblPrecioTotal
+            // tpPedidos
             // 
-            this.lblPrecioTotal.AutoSize = true;
-            this.lblPrecioTotal.Depth = 0;
-            this.lblPrecioTotal.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPrecioTotal.Location = new System.Drawing.Point(299, 500);
-            this.lblPrecioTotal.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblPrecioTotal.Name = "lblPrecioTotal";
-            this.lblPrecioTotal.Size = new System.Drawing.Size(46, 19);
-            this.lblPrecioTotal.TabIndex = 64;
-            this.lblPrecioTotal.Text = "$$$$$";
-            this.lblPrecioTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.tpPedidos.Controls.Add(this.lblPedidos);
+            this.tpPedidos.Controls.Add(this.lstPedidos);
+            this.tpPedidos.ImageKey = "pedidos.png";
+            this.tpPedidos.Location = new System.Drawing.Point(4, 31);
+            this.tpPedidos.Name = "tpPedidos";
+            this.tpPedidos.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPedidos.Size = new System.Drawing.Size(434, 686);
+            this.tpPedidos.TabIndex = 2;
+            this.tpPedidos.Text = "Pedidos";
+            this.tpPedidos.UseVisualStyleBackColor = true;
             // 
-            // lblPagar
+            // lstPedidos
             // 
-            this.lblPagar.AutoSize = true;
-            this.lblPagar.Depth = 0;
-            this.lblPagar.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblPagar.Location = new System.Drawing.Point(16, 501);
-            this.lblPagar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblPagar.Name = "lblPagar";
-            this.lblPagar.Size = new System.Drawing.Size(297, 19);
-            this.lblPagar.TabIndex = 63;
-            this.lblPagar.Text = "Total a Pagar .................................................";
+            this.lstPedidos.AutoSizeTable = false;
+            this.lstPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lstPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstPedidos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.direccion,
+            this.metodoPago,
+            this.monto,
+            this.fechaRecepcion});
+            this.lstPedidos.Depth = 0;
+            this.lstPedidos.FullRowSelect = true;
+            this.lstPedidos.HideSelection = false;
+            this.lstPedidos.Location = new System.Drawing.Point(18, 76);
+            this.lstPedidos.MinimumSize = new System.Drawing.Size(200, 100);
+            this.lstPedidos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.lstPedidos.MouseState = MaterialSkin.MouseState.OUT;
+            this.lstPedidos.Name = "lstPedidos";
+            this.lstPedidos.OwnerDraw = true;
+            this.lstPedidos.Size = new System.Drawing.Size(344, 474);
+            this.lstPedidos.TabIndex = 0;
+            this.lstPedidos.UseCompatibleStateImageBehavior = false;
+            this.lstPedidos.View = System.Windows.Forms.View.Details;
+            // 
+            // direccion
+            // 
+            this.direccion.Text = "Direccion";
+            this.direccion.Width = 120;
+            // 
+            // metodoPago
+            // 
+            this.metodoPago.Text = "Metodo de Pago";
+            this.metodoPago.Width = 100;
+            // 
+            // monto
+            // 
+            this.monto.Text = "Monto";
+            // 
+            // fechaRecepcion
+            // 
+            this.fechaRecepcion.Text = "Recepcion";
+            this.fechaRecepcion.Width = 120;
+            // 
+            // lblPedidos
+            // 
+            this.lblPedidos.AutoSize = true;
+            this.lblPedidos.Depth = 0;
+            this.lblPedidos.Font = new System.Drawing.Font("Roboto", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblPedidos.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
+            this.lblPedidos.Location = new System.Drawing.Point(11, 16);
+            this.lblPedidos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPedidos.Name = "lblPedidos";
+            this.lblPedidos.Size = new System.Drawing.Size(185, 41);
+            this.lblPedidos.TabIndex = 1;
+            this.lblPedidos.Text = "Mis pedidos";
             // 
             // FrmPrincipal
             // 
@@ -249,6 +328,8 @@
             this.materialTabControl1.ResumeLayout(false);
             this.tpCarrito.ResumeLayout(false);
             this.tpCarrito.PerformLayout();
+            this.tpPedidos.ResumeLayout(false);
+            this.tpPedidos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,5 +350,12 @@
         private MaterialSkin.Controls.MaterialButton btnCargarCarrito;
         private MaterialSkin.Controls.MaterialLabel lblPrecioTotal;
         private MaterialSkin.Controls.MaterialLabel lblPagar;
+        private System.Windows.Forms.TabPage tpPedidos;
+        private MaterialSkin.Controls.MaterialListView lstPedidos;
+        private MaterialSkin.Controls.MaterialLabel lblPedidos;
+        private System.Windows.Forms.ColumnHeader direccion;
+        private System.Windows.Forms.ColumnHeader metodoPago;
+        private System.Windows.Forms.ColumnHeader monto;
+        private System.Windows.Forms.ColumnHeader fechaRecepcion;
     }
 }
