@@ -103,7 +103,7 @@ namespace DeliverEat
             {
                 if (dtpFechaHoraRecepcion.Value.Hour < 7)
                 {
-                    mensaje += "\nLas horas válidas para planificar un envío son desde las 7:00 hasta las 23:59.";
+                    mensaje += "\nLas horas válidas son desde las 7:00 hasta las 23:59.";
                 }
                 if (dtpFechaHoraRecepcion.Value < DateTime.Now)
                 {
